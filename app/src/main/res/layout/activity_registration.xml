@@ -4,7 +4,145 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Registration"
-    android:background="@drawable/backgroundcolor">
+    android:background="@drawable/backgroundcolor"
+    app:layoutDescription="@xml/activity_registration_scene"
+    tools:context=".Registration">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="404dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:paddingHorizontal="30dp"
+        android:text="U-and-Me Residential"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.058" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Welcome become one of our family neighbour"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <EditText
+        android:id="@+id/phoneReg"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="  Phone Number"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/icReg"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="  Identity Card Number (IC)"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/phoneReg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/phoneReg"
+        app:layout_constraintTop_toBottomOf="@+id/phoneReg" />
+
+    <EditText
+        android:id="@+id/nameReg"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="  Full Name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/icReg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/icReg"
+        app:layout_constraintTop_toBottomOf="@+id/icReg" />
+
+    <EditText
+        android:id="@+id/usernameReg"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="  Username"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/nameReg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nameReg"
+        app:layout_constraintTop_toBottomOf="@+id/nameReg" />
+
+    <EditText
+        android:id="@+id/passwordReg"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="  Password"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/usernameReg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/usernameReg"
+        app:layout_constraintTop_toBottomOf="@+id/usernameReg" />
+
+    <EditText
+        android:id="@+id/passwordconfirmReg"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="  Password confirmation"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/usernameReg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/usernameReg"
+        app:layout_constraintTop_toBottomOf="@+id/usernameReg" />
+
+    <EditText
+        android:id="@+id/vehicleReg"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="136dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="  Vehicle Plate Number"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/usernameReg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/usernameReg"
+        app:layout_constraintTop_toBottomOf="@+id/usernameReg" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="252dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:text="SIGN UP"
+        app:layout_constraintEnd_toEndOf="@+id/vehicleReg"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/vehicleReg"
+        app:layout_constraintTop_toBottomOf="@+id/vehicleReg" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
