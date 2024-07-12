@@ -55,7 +55,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editTextText" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/userLogin"
         android:layout_width="270dp"
         android:layout_height="49dp"
         android:layout_marginTop="44dp"
@@ -71,10 +71,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="76dp"
         android:text="Don't have an account?"
-        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="@+id/userLogin"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toStartOf="@+id/userLogin"
+        app:layout_constraintTop_toBottomOf="@+id/userLogin" />
 
     <TextView
         android:id="@+id/textView2"
@@ -83,10 +83,10 @@
         android:layout_marginTop="76dp"
         android:text="Don't have an account?"
         android:textColor="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="@+id/userLogin"
         app:layout_constraintHorizontal_bias="0.492"
-        app:layout_constraintStart_toStartOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintStart_toStartOf="@+id/userLogin"
+        app:layout_constraintTop_toBottomOf="@+id/userLogin" />
 
     <TextView
         android:id="@+id/textView4"
