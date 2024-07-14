@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroundcolor"
-    app:layoutDescription="@xml/activity_registration_scene"
     tools:context=".Registration">
+<!--    app:layoutDescription="@xml/activity_registration_scene"-->
+
 
     <TextView
         android:id="@+id/textView"

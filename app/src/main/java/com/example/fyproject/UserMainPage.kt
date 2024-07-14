@@ -73,7 +73,7 @@ class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //
 //                }
 //                true
-            }
+    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
@@ -113,7 +113,6 @@ class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
 }
-
 
 
 
