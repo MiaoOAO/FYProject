@@ -1,6 +1,8 @@
 <resources>
-<string name="app_name">Navigation Drawer</string>
-<!-- to toggle the open close button of the navigation drawer -->
-<string name="nav_open">Open Navigation Drawer</string>
-<string name="nav_close">Close Navigation Drawer</string>
+    <string name="app_name">Navigation Drawer</string>
+    <!-- to toggle the open close button of the navigation drawer -->
+    <string name="nav_open">Open Drawer</string>
+    <string name="nav_close">Close Drawer</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
