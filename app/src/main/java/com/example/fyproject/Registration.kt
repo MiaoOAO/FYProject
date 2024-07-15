@@ -8,31 +8,54 @@ import com.example.fyproject.databinding.ActivityRegistrationBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.auth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Registration : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var binding: ActivityRegistrationBinding
+    private lateinit var fStore: FirebaseFirestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_registration)
 
         binding = ActivityRegistrationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        fStore = FirebaseFirestore.getInstance()
 
         binding.signUpBtn.setOnClickListener{
             val email = binding.emailReg.text.toString()
             val pass = binding.passwordReg.text.toString()
             val confirmPass = binding.passwordconfirmReg.text.toString()
+            val fullName = binding.nameReg.text.toString()
+            val phone = binding.phoneReg.text.toString()
 
-            if(email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()){
+            val userMap = hashMapOf(
+                "email" to email,
+                "password" to pass,
+                "name" to fullName,
+                "phone" to phone
+            )
+
+            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+
+            if(email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty() && fullName.isNotEmpty()){
                 if(pass == confirmPass){
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
                             val intent = Intent(this, Registration::class.java)
+                                //connent and store the user data to firebase firestore
+                                fStore.collection("user").document(userId).set(userMap).addOnSuccessListener {
+                                    Toast.makeText(this, "successful added", Toast.LENGTH_SHORT).show()
+                                }
+                                    .addOnFailureListener{
+                                    Toast.makeText(this, "Failed to added", Toast.LENGTH_SHORT).show()
+                                    }
+
                             startActivity(intent)
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
