@@ -25,13 +25,13 @@
         app:layout_constraintVertical_bias="0.119" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/emailLogin"
         android:layout_width="284dp"
         android:layout_height="45dp"
         android:layout_marginTop="84dp"
         android:background="@drawable/border"
         android:ems="10"
-        android:hint="  Phone Number"
+        android:hint="  Email"
         android:inputType="text"
         android:paddingHorizontal="5dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,7 +40,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <EditText
-        android:id="@+id/editTextTextPassword2"
+        android:id="@+id/passLogin"
         android:layout_width="282dp"
         android:layout_height="46dp"
         android:layout_marginTop="36dp"
@@ -49,10 +49,10 @@
         android:hint="  Password"
         android:inputType="textPassword"
         android:paddingHorizontal="5dp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
+        app:layout_constraintEnd_toEndOf="@+id/emailLogin"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editTextText"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText" />
+        app:layout_constraintStart_toStartOf="@+id/emailLogin"
+        app:layout_constraintTop_toBottomOf="@+id/emailLogin" />
 
     <Button
         android:id="@+id/userLogin"
@@ -60,10 +60,10 @@
         android:layout_height="49dp"
         android:layout_marginTop="44dp"
         android:text="LOGIN"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword2"
+        app:layout_constraintEnd_toEndOf="@+id/passLogin"
         app:layout_constraintHorizontal_bias="0.612"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword2"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword2" />
+        app:layout_constraintStart_toStartOf="@+id/passLogin"
+        app:layout_constraintTop_toBottomOf="@+id/passLogin" />
 
     <TextView
         android:id="@+id/textView2"

@@ -79,13 +79,13 @@
         app:layout_constraintTop_toBottomOf="@+id/icReg" />
 
     <EditText
-        android:id="@+id/usernameReg"
+        android:id="@+id/emailReg"
         android:layout_width="266dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/border"
         android:ems="10"
-        android:hint="  Username"
+        android:hint="  Email Address"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/nameReg"
         app:layout_constraintHorizontal_bias="0.0"
@@ -101,10 +101,10 @@
         android:ems="10"
         android:hint="  Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/usernameReg"
+        app:layout_constraintEnd_toEndOf="@+id/emailReg"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/usernameReg"
-        app:layout_constraintTop_toBottomOf="@+id/usernameReg" />
+        app:layout_constraintStart_toStartOf="@+id/emailReg"
+        app:layout_constraintTop_toBottomOf="@+id/emailReg" />
 
     <EditText
         android:id="@+id/passwordconfirmReg"
@@ -115,10 +115,10 @@
         android:ems="10"
         android:hint="  Password confirmation"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/usernameReg"
+        app:layout_constraintEnd_toEndOf="@+id/emailReg"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/usernameReg"
-        app:layout_constraintTop_toBottomOf="@+id/usernameReg" />
+        app:layout_constraintStart_toStartOf="@+id/emailReg"
+        app:layout_constraintTop_toBottomOf="@+id/emailReg" />
 
     <EditText
         android:id="@+id/vehicleReg"
@@ -129,13 +129,13 @@
         android:ems="10"
         android:hint="  Vehicle Plate Number"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/usernameReg"
+        app:layout_constraintEnd_toEndOf="@+id/emailReg"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/usernameReg"
-        app:layout_constraintTop_toBottomOf="@+id/usernameReg" />
+        app:layout_constraintStart_toStartOf="@+id/emailReg"
+        app:layout_constraintTop_toBottomOf="@+id/emailReg" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/signUpBtn"
         android:layout_width="252dp"
         android:layout_height="46dp"
         android:layout_marginTop="8dp"
