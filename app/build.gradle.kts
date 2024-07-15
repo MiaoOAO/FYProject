@@ -59,6 +59,11 @@ dependencies {
     // Add the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-auth")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
+    // for adding recyclerview
+    implementation ("androidx.recyclerview:recyclerview:1.3.2")
+    // for adding cardview
+    implementation ("androidx.cardview:cardview:1.0.0")
 
 
 }

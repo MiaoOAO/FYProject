@@ -47,7 +47,8 @@ class Registration : AppCompatActivity() {
                 if(pass == confirmPass){
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
-                            val intent = Intent(this, Registration::class.java)
+                            val intent = Intent(this, MainActivity::class.java)
+
                                 //connent and store the user data to firebase firestore
                                 fStore.collection("user").document(userId).set(userMap).addOnSuccessListener {
                                     Toast.makeText(this, "successful added", Toast.LENGTH_SHORT).show()
