@@ -7,12 +7,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fyproject.adapter.ImageAdapter
-import kotlin.math.abs
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +45,18 @@ class UserMainPageFragment : Fragment() {
                 handler.postDelayed(runnable , 6000)
             }
         })
+
+        val visitorReg: Button = view.findViewById(R.id.visitorRegBtn)
+        val visitorList: Button= view.findViewById(R.id.visitorListBtn)
+        val parkingRes:Button = view.findViewById(R.id.parkingResBtn)
+        val parkingList:Button = view.findViewById(R.id.parkingListBtn)
+
+        visitorList.setOnClickListener{
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragmentContainer, VisitorListFragment())
+            transaction?.addToBackStack(null)
+            transaction?.commit()
+        }
 
         return view
     }
