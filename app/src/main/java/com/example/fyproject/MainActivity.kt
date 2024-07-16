@@ -11,15 +11,19 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
 import com.google.firebase.firestore.auth.User
+import com.google.firebase.firestore.firestore
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
+    private lateinit var userList: ArrayList<User>
+    private var fireStoreDb = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,7 @@ class MainActivity : AppCompatActivity() {
         val login: Button= findViewById(R.id.userLogin)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        database = Firebase.database.reference
 
         login.setOnClickListener{
             val email = binding.emailLogin.text.toString()
@@ -46,9 +51,9 @@ class MainActivity : AppCompatActivity() {
             if(email.isNotEmpty() && pass.isNotEmpty()){
                     firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
-//                            checkUserProfileComplete()
-                            val intent = Intent(this, UserMainPage::class.java)
-                            startActivity(intent)
+                            checkUserProfileComplete()
+//                            val intent = Intent(this, UserMainPage::class.java)
+//                            startActivity(intent)
                         } else {
                             Toast.makeText(this, "Email or Password is invalid", Toast.LENGTH_SHORT).show()
                         }
@@ -63,38 +68,29 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent);
         }
 
-        database = Firebase.database.reference
 
     }
 
-//    private fun checkUserProfileComplete() {
-//        val userId = firebaseAuth.currentUser?.uid ?: return // Get current user ID or return if null
-//
-//        database.child("users").child(userId).addListenerForSingleValueEvent(object :
-//            ValueEventListener {
-//            override fun onDataChange(snapshot: DataSnapshot) {
-//                if (snapshot.exists()) {
-//                    val user = snapshot.getValue(User::class.java) // Assuming a User class with relevant fields
-//                    if (user?.icNo.isNullOrEmpty() || user?.fullName.isNullOrEmpty() || user?.carPlateNo.isNullOrEmpty()) {
-//                        // Profile incomplete, navigate to profile completion fragment
-//                        val intent = Intent(this@MainActivity, ProfileCompletionFragment::class.java)
-//                        startActivity(intent)
-//                    } else {
-//                        // Profile complete, navigate to UserMainPage
-//                        val intent = Intent(this@MainActivity, UserMainPage::class.java)
-//                        startActivity(intent)
-//                    }
-//                } else {
-//                    // Handle potential user data retrieval error (optional)
-//                }
-//            }
-//
-//            override fun onCancelled(error: DatabaseError) {
-//                // Handle database error (optional)
-//                Toast.makeText(this@MainActivity, "Error checking profile data", Toast.LENGTH_SHORT).show()
-//            }
-//        })
-//    }
+    private fun checkUserProfileComplete() {
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+        val ref = fireStoreDb.collection("user").document(userId)
+
+        ref.get().addOnSuccessListener {
+            if(it != null){
+                val getEmail = it.data?.get("email").toString()
+                val getName = it.data?.get("name").toString()
+                val getPhone = it.data?.get("phone").toString()
+                Toast.makeText(this, "Success to get Email:$getEmail, name:$getName, phone:$getPhone", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, UserMainPage::class.java)
+                startActivity(intent)
+
+            }
+        }
+            .addOnFailureListener{
+                Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show()
+            }
+
+    }
 
 
 }

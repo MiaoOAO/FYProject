@@ -1,3 +1,3 @@
 package com.example.fyproject.DatabaseClass
 
-data class User(val icNo: String? = null, val fullName: String? = null, val carPlateNo: String? = null)
+data class User(val icNo: String? = "", val fullName: String? = "", val carPlateNo: String? = "")
