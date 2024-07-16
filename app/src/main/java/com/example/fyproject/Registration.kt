@@ -36,11 +36,13 @@ class Registration : AppCompatActivity() {
             val userMap = hashMapOf(
                 "email" to email,
                 "password" to pass,
-               // "name" to fullName,
-                "phone" to phone
+                "phone" to phone,
+                "icNo" to "",
+                "name" to "",
+                "plateNo" to ""
             )
 
-            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+//            val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
 
             if(email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()){
@@ -49,6 +51,7 @@ class Registration : AppCompatActivity() {
                         if (it.isSuccessful) {
                             val intent = Intent(this, MainActivity::class.java)
 
+                                val userId = FirebaseAuth.getInstance().currentUser!!.uid
                                 //connent and store the user data to firebase firestore
                                 fStore.collection("user").document(userId).set(userMap).addOnSuccessListener {
                                     Toast.makeText(this, "Account register successful", Toast.LENGTH_SHORT).show()

@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
-    private lateinit var userList: ArrayList<User>
+//    private lateinit var userList: ArrayList<User>
     private var fireStoreDb = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,12 +77,19 @@ class MainActivity : AppCompatActivity() {
 
         ref.get().addOnSuccessListener {
             if(it != null){
-                val getEmail = it.data?.get("email").toString()
+                val getIc = it.data?.get("icNo").toString()
                 val getName = it.data?.get("name").toString()
-                val getPhone = it.data?.get("phone").toString()
-                Toast.makeText(this, "Success to get Email:$getEmail, name:$getName, phone:$getPhone", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, UserMainPage::class.java)
-                startActivity(intent)
+                val getPlateNo = it.data?.get("plateNo").toString()
+
+                    if(getIc.isNotEmpty() || getName.isNotEmpty() || getPlateNo.isNotEmpty()){
+                    Toast.makeText(this, "Success to get Email:$getIc, name:$getName, phone:$getPlateNo", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, UserMainPage::class.java)
+                    startActivity(intent)
+                    }else{
+                        Toast.makeText(this, "Please Fill in the required information userID: $userId", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, ProfileFormActivity::class.java)
+                        startActivity(intent)
+                    }
 
             }
         }
