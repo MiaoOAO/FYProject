@@ -30,20 +30,20 @@ class Registration : AppCompatActivity() {
             val email = binding.emailReg.text.toString()
             val pass = binding.passwordReg.text.toString()
             val confirmPass = binding.passwordconfirmReg.text.toString()
-            val fullName = binding.nameReg.text.toString()
+            //val fullName = binding.nameReg.text.toString()
             val phone = binding.phoneReg.text.toString()
 
             val userMap = hashMapOf(
                 "email" to email,
                 "password" to pass,
-                "name" to fullName,
+               // "name" to fullName,
                 "phone" to phone
             )
 
             val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
 
-            if(email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty() && fullName.isNotEmpty()){
+            if(email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()){
                 if(pass == confirmPass){
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
@@ -51,7 +51,7 @@ class Registration : AppCompatActivity() {
 
                                 //connent and store the user data to firebase firestore
                                 fStore.collection("user").document(userId).set(userMap).addOnSuccessListener {
-                                    Toast.makeText(this, "successful added", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(this, "Account register successful", Toast.LENGTH_SHORT).show()
                                 }
                                     .addOnFailureListener{
                                     Toast.makeText(this, "Failed to added", Toast.LENGTH_SHORT).show()

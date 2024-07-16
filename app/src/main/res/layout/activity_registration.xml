@@ -21,10 +21,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintVertical_bias="0.106" />
 
     <TextView
         android:id="@+id/textView3"
@@ -51,46 +51,18 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/icReg"
+        android:id="@+id/emailReg"
         android:layout_width="266dp"
         android:layout_height="50dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/border"
         android:ems="10"
-        android:hint="  Identity Card Number (IC)"
+        android:hint="  Email Address"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/phoneReg"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/phoneReg"
         app:layout_constraintTop_toBottomOf="@+id/phoneReg" />
-
-    <EditText
-        android:id="@+id/nameReg"
-        android:layout_width="266dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:hint="  Full Name"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/icReg"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/icReg"
-        app:layout_constraintTop_toBottomOf="@+id/icReg" />
-
-    <EditText
-        android:id="@+id/emailReg"
-        android:layout_width="266dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:hint="  Email Address"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/nameReg"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/nameReg"
-        app:layout_constraintTop_toBottomOf="@+id/nameReg" />
 
     <EditText
         android:id="@+id/passwordReg"
@@ -120,30 +92,16 @@
         app:layout_constraintStart_toStartOf="@+id/emailReg"
         app:layout_constraintTop_toBottomOf="@+id/emailReg" />
 
-    <EditText
-        android:id="@+id/vehicleReg"
-        android:layout_width="266dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="136dp"
-        android:background="@drawable/border"
-        android:ems="10"
-        android:hint="  Vehicle Plate Number"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/emailReg"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/emailReg"
-        app:layout_constraintTop_toBottomOf="@+id/emailReg" />
-
     <Button
         android:id="@+id/signUpBtn"
         android:layout_width="252dp"
         android:layout_height="46dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="36dp"
         android:text="SIGN UP"
-        app:layout_constraintEnd_toEndOf="@+id/vehicleReg"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="@+id/vehicleReg"
-        app:layout_constraintTop_toBottomOf="@+id/vehicleReg" />
+        app:layout_constraintEnd_toEndOf="@+id/passwordconfirmReg"
+        app:layout_constraintHorizontal_bias="0.428"
+        app:layout_constraintStart_toStartOf="@+id/passwordconfirmReg"
+        app:layout_constraintTop_toBottomOf="@+id/passwordconfirmReg" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

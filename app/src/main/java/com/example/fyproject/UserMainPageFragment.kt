@@ -11,6 +11,7 @@ import android.widget.Button
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fyproject.adapter.ImageAdapter
+import com.example.fyproject.listener.UserMainPageListener
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,13 +53,38 @@ class UserMainPageFragment : Fragment() {
         val parkingList:Button = view.findViewById(R.id.parkingListBtn)
 
         visitorList.setOnClickListener{
-            val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragmentContainer, VisitorListFragment())
-            transaction?.addToBackStack(null)
-            transaction?.commit()
+            changeFragment(VisitorListFragment())
+            updateToolbarTitle("Visitor List")
         }
 
+        visitorReg.setOnClickListener{
+            changeFragment(VisitorRegistrationFragment())
+            updateToolbarTitle("Visitor Registration Form")
+        }
+
+        parkingRes.setOnClickListener{
+            changeFragment(ParkingReservationFragment())
+            updateToolbarTitle("Parking Reservation Form")
+        }
+
+        parkingList.setOnClickListener{
+            changeFragment(ParkingListFragment())
+            updateToolbarTitle("Visitor List")
+        }
+
+
         return view
+    }
+
+
+    private fun changeFragment(frag : Fragment) {
+        val transaction = activity?.supportFragmentManager?.beginTransaction()
+        transaction?.replace(R.id.fragmentContainer, frag)
+        transaction?.addToBackStack(null)
+        transaction?.commit()
+    }
+    private fun updateToolbarTitle(title: String) {
+        (activity as? UserMainPageListener)?.onFragmentAction(title)
     }
 
     override fun onPause() {
@@ -107,6 +133,5 @@ class UserMainPageFragment : Fragment() {
         viewPager2.clipChildren = false
         viewPager2.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
     }
-
 
 }
