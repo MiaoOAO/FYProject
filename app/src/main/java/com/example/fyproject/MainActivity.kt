@@ -80,8 +80,9 @@ class MainActivity : AppCompatActivity() {
                 val getIc = it.data?.get("icNo").toString()
                 val getName = it.data?.get("name").toString()
                 val getPlateNo = it.data?.get("plateNo").toString()
+                val getAddress = it.data?.get("address").toString()
 
-                    if(getIc.isNotEmpty() || getName.isNotEmpty() || getPlateNo.isNotEmpty()){
+                    if(getIc.isNotEmpty() || getName.isNotEmpty() || getPlateNo.isNotEmpty() || getAddress.isNotEmpty()){
                     Toast.makeText(this, "Success to get Email:$getIc, name:$getName, phone:$getPlateNo", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, UserMainPage::class.java)
                     startActivity(intent)

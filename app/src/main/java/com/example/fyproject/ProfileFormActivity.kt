@@ -30,22 +30,23 @@ class ProfileFormActivity : AppCompatActivity() {
         binding.profileFormBtn.setOnClickListener{
             val icNo = binding.icNoReg.text.toString()
             val fName = binding.nameReg.text.toString()
+            val hAddress = binding.addressReg.text.toString()
             val plateNo = binding.plateNoReg.text.toString()
 
             val updateUserMap = hashMapOf(
                 "icNo" to icNo,
                 "name" to fName,
+                "address" to hAddress,
                 "plateNo" to plateNo
             )
 
-            val email = "l1t8MmAPnJepvG20PxtSefSVOoZ2"
             val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
-            if(icNo.isNotEmpty() && fName.isNotEmpty() && plateNo.isNotEmpty()){
+            if(icNo.isNotEmpty() && fName.isNotEmpty() && plateNo.isNotEmpty() && hAddress.isNotEmpty()){
 
-                val intent = Intent(this, MainActivity::class.java)
+                val intent = Intent(this, UserMainPage::class.java)
 
-                fStore.collection("user").document(userId)  // Use email as primary key
+                fStore.collection("user").document(userId)
                                 .update(updateUserMap as Map<String, Any>)
                                 .addOnSuccessListener {
                                     Toast.makeText(

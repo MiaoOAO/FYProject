@@ -39,6 +39,7 @@ class Registration : AppCompatActivity() {
                 "phone" to phone,
                 "icNo" to "",
                 "name" to "",
+                "address" to "",
                 "plateNo" to ""
             )
 

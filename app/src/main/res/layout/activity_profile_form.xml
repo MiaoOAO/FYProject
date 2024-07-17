@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.315" />
+        app:layout_constraintVertical_bias="0.273" />
 
     <EditText
         android:id="@+id/nameReg"
@@ -35,7 +35,21 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/icNoReg"
         app:layout_constraintTop_toBottomOf="@+id/icNoReg"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.053" />
+
+    <EditText
+        android:id="@+id/addressReg"
+        android:layout_width="266dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="  1, Jalan example 1/5, Taman Resident UAndMe"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/nameReg"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nameReg"
+        app:layout_constraintTop_toBottomOf="@+id/nameReg" />
 
     <EditText
         android:id="@+id/plateNoReg"
@@ -46,17 +60,17 @@
         android:hint="  Car Plate Number"
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/nameReg"
+        app:layout_constraintEnd_toEndOf="@+id/addressReg"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/nameReg"
-        app:layout_constraintTop_toBottomOf="@+id/nameReg"
-        app:layout_constraintVertical_bias="0.125" />
+        app:layout_constraintStart_toStartOf="@+id/addressReg"
+        app:layout_constraintTop_toBottomOf="@+id/addressReg"
+        app:layout_constraintVertical_bias="0.093" />
 
     <Button
         android:id="@+id/profileFormBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="60dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/plateNoReg"
         app:layout_constraintHorizontal_bias="0.502"
