@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/user_name"
+        android:id="@+id/nameTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -29,15 +29,15 @@
         app:layout_constraintTop_toTopOf="@id/profile_picture" />
 
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/emailTv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginRight="132dp"
         android:text="johndoe@example.com"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/user_name"
-        app:layout_constraintTop_toBottomOf="@+id/user_name" />
+        app:layout_constraintStart_toStartOf="@+id/nameTv"
+        app:layout_constraintTop_toBottomOf="@+id/nameTv" />
 
     <TextView
         android:id="@+id/textView7"
