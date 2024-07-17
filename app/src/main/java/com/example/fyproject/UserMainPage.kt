@@ -1,5 +1,6 @@
 package com.example.fyproject
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -67,6 +68,13 @@ class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.profile_nav_menu-> {
                 setToolbarTitle("Profile")
                 changeFragment(ProfileFragment())
+            }
+
+            R.id.logout_nav_menu-> {
+                var intent = Intent(this, MainActivity::class.java)
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                startActivity(intent)
+                finish()
             }
         }
 

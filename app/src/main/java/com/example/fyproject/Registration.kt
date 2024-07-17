@@ -52,8 +52,9 @@ class Registration : AppCompatActivity() {
                         if (it.isSuccessful) {
                             val intent = Intent(this, MainActivity::class.java)
 
-                                val userId = FirebaseAuth.getInstance().currentUser!!.uid
                                 //connent and store the user data to firebase firestore
+                                val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
                                 fStore.collection("user").document(userId).set(userMap).addOnSuccessListener {
                                     Toast.makeText(this, "Account register successful", Toast.LENGTH_SHORT).show()
                                 }

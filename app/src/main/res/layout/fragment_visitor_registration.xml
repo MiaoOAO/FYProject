@@ -1,14 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VisitorRegistrationFragment">
+    tools:context=".VisitorRegistrationFragment" >
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <EditText
+        android:id="@+id/visName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Visitor's name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.452"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.158" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/visPlateNo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Visitor's vehicle plate number"
+        app:layout_constraintEnd_toEndOf="@+id/visName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/visName"
+        app:layout_constraintTop_toBottomOf="@+id/visName" />
+
+    <EditText
+        android:id="@+id/visPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Visitor's phone number"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/visPlateNo"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/visPlateNo"
+        app:layout_constraintTop_toBottomOf="@+id/visPlateNo" />
+
+    <EditText
+        android:id="@+id/visDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintEnd_toEndOf="@+id/visPhone"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/visPhone"
+        app:layout_constraintTop_toBottomOf="@+id/visPhone" />
+
+    <Button
+        android:id="@+id/visSubmitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="76dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/visDate"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/visDate"
+        app:layout_constraintTop_toBottomOf="@+id/visDate" />
+
+    <Button
+        android:id="@+id/searchVisBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="@+id/visSubmitBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/visSubmitBtn"
+        app:layout_constraintTop_toBottomOf="@+id/visSubmitBtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

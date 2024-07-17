@@ -9,21 +9,21 @@
         android:id="@+id/profile_picture"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="4dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="48dp"
         android:src="@drawable/a"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/nameTv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="John Doe"
+        android:layout_width="247dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="12dp"
+        android:hint="Loading..."
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintHorizontal_bias="0.553"
         app:layout_constraintLeft_toRightOf="@id/profile_picture"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/profile_picture" />
@@ -34,7 +34,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginRight="132dp"
-        android:text="johndoe@example.com"
+        android:hint="Loading..."
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="@+id/nameTv"
         app:layout_constraintTop_toBottomOf="@+id/nameTv" />
@@ -46,6 +46,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="68dp"
         android:text="Identity Card Number"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_picture" />
 
@@ -53,7 +54,6 @@
         android:id="@+id/icNoTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -63,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:text="Phone Number"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/icNoTv" />
 
@@ -70,7 +71,6 @@
         android:id="@+id/phoneNoTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -78,9 +78,9 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="24dp"
         android:text="Address"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/phoneNoTv" />
 
@@ -88,7 +88,6 @@
         android:id="@+id/addressTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
         app:layout_constraintStart_toStartOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
