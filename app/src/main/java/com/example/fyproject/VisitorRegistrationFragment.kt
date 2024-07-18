@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.fyproject.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -68,39 +70,10 @@ class VisitorRegistrationFragment : Fragment() {
         }
 
 
-        //search vehicle plate function
+
         sBtn.setOnClickListener{
-            // Collection reference
-            val visitorRef = fStore.collection("visitor")
-
-// Optional: Filter by plateNo (replace with your desired plate number)
-            val searchPlateNo = "BGM0000"  // Replace with actual plate number
-            val query = if (searchPlateNo.isNotEmpty()) {
-                visitorRef.whereEqualTo("plateNo", searchPlateNo)  // Filter by plateNo
-            } else {
-                visitorRef  // No filter, retrieve all documents
-            }
-
-// Perform the query and handle results
-            query.get()
-                .addOnSuccessListener { documents ->
-                    if (documents.isEmpty) {
-                        Toast.makeText(requireContext(), "No visitors found", Toast.LENGTH_SHORT).show()
-                    } else {
-                        val plateNumbers = mutableListOf<String>()
-                        for (document in documents) {
-                            val plateNo = document.getString("plateNo")
-                            if (plateNo != null) {
-                                plateNumbers.add(plateNo)
-                            }
-                        }
-                        // Do something with the list of plate numbers (e.g., display in a list)
-                        Toast.makeText(requireContext(), "Plate Number: $plateNumbers found", Toast.LENGTH_SHORT).show()
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(requireContext(), "Search failed", Toast.LENGTH_SHORT).show()
-                }
+            //search vehicle plate function
+            checkPlateNumberDialog()
         }
 
 
@@ -109,6 +82,63 @@ class VisitorRegistrationFragment : Fragment() {
 
 
         return view
+    }
+
+    private fun checkPlateNumberDialog() {
+        val plateNoInput = EditText(requireContext())
+        val dialog = AlertDialog.Builder(requireContext())
+            .setTitle("Check Car Plate Number")
+            .setMessage("Enter Car Plate Number to check: ")
+            .setView(plateNoInput)
+            .setPositiveButton("Check") { dialog, which ->
+                val plateNoCheck = plateNoInput.text.toString().trim()
+
+                val visitorRef = fStore.collection("visitor")
+
+                if (plateNoCheck.isNotEmpty()) {
+                    val query = if (plateNoCheck.isNotEmpty()) {
+                        visitorRef.whereEqualTo("plateNo", plateNoCheck)  // Filter by plateNo
+                    } else {
+                        visitorRef  // Keep filtering until the end, retrieve all documents
+                    }
+
+                    query.get()
+                        .addOnSuccessListener { documents ->
+                            if (documents.isEmpty) {
+                                Toast.makeText(
+                                    requireContext(),
+                                    "No plate number found",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            } else {
+                                val plateNumbers = mutableListOf<String>()
+                                for (document in documents) {
+                                    val plateNo = document.getString("plateNo")
+                                    if (plateNo != null) {
+                                        plateNumbers.add(plateNo)
+                                    }
+                                }
+
+                                Toast.makeText(
+                                    requireContext(),
+                                    "Plate Number: $plateNumbers found",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                            }
+                        }
+                        .addOnFailureListener { exception ->
+                            Toast.makeText(requireContext(), "Search failed", Toast.LENGTH_SHORT)
+                                .show()
+                        }
+
+                }else{
+                    Toast.makeText(requireContext(), "Input cannot be blank", Toast.LENGTH_SHORT)
+                        .show()
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .create()
+        dialog.show()
     }
 
 }

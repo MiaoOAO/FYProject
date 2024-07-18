@@ -4,7 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.example.fyproject.databinding.ActivityMainBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -22,7 +25,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var database: DatabaseReference
-//    private lateinit var userList: ArrayList<User>
     private var fireStoreDb = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +41,12 @@ class MainActivity : AppCompatActivity() {
 
         val signUp: Button = findViewById(R.id.signUp)
         val login: Button= findViewById(R.id.userLogin)
+        val resetPass: TextView = findViewById(R.id.resetPassLogin)
+
+        resetPass.setOnClickListener{
+            showResetPasswordDialog()
+        }
+
 
         firebaseAuth = FirebaseAuth.getInstance()
         database = Firebase.database.reference
@@ -97,6 +105,71 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener{
                 Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show()
             }
+
+    }
+
+    //Reset password function
+    private fun showResetPasswordDialog() {
+        val emailInput = EditText(this)
+        val dialog = AlertDialog.Builder(this)
+            .setTitle("Reset Password")
+            .setMessage("Enter your email address to receive a reset link in your email inbox.")
+            .setView(emailInput)
+            .setPositiveButton("Reset") { dialog, which ->
+                val emailReset = emailInput.text.toString().trim()
+                sendResetPasswordEmail(emailReset)
+            }
+            .setNegativeButton("Cancel", null)
+            .create()
+        dialog.show()
+    }
+
+    private fun sendResetPasswordEmail(emailReset: String) {
+
+        val accountEmailRef = fireStoreDb.collection("user")
+
+    if(emailReset.isNotEmpty()) {
+
+        val query = if (emailReset.isNotEmpty()) {
+            accountEmailRef.whereEqualTo("email", emailReset)  // Filter by email entered
+        } else {
+            accountEmailRef  // No filter, retrieve all documents
+        }
+
+// Perform the query and handle results
+        query.get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    Toast.makeText(this, "Email not found, please enter again", Toast.LENGTH_SHORT).show()
+                } else {
+                    val emails = mutableListOf<String>()
+                    for (document in documents) {
+                        val emailSearch = document.getString("email")
+                        if (emailSearch != null) {
+                            emails.add(emailSearch)
+                        }
+                    }
+
+
+                    firebaseAuth.sendPasswordResetEmail(emailReset)
+                        .addOnCompleteListener(this) { task ->
+                            if (task.isSuccessful) {
+                                Toast.makeText(this, "Email sent for password reset!", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(this, "Failed to send reset email!", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+
+                    Toast.makeText(this, "Reset link sent to your email inbox, please check", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener { exception ->
+                Toast.makeText(this, "System error, failed", Toast.LENGTH_SHORT).show()
+            }
+    }else{
+        Toast.makeText(this, "Input cannot be blank", Toast.LENGTH_SHORT).show()
+    }
+
 
     }
 

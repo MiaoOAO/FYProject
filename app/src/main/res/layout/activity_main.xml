@@ -33,7 +33,7 @@
         android:ems="10"
         android:hint="  Email"
         android:inputType="text"
-        android:paddingHorizontal="5dp"
+        android:paddingHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
         android:ems="10"
         android:hint="  Password"
         android:inputType="textPassword"
-        android:paddingHorizontal="5dp"
+        android:paddingHorizontal="10dp"
         app:layout_constraintEnd_toEndOf="@+id/emailLogin"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/emailLogin"
@@ -58,10 +58,10 @@
         android:id="@+id/userLogin"
         android:layout_width="270dp"
         android:layout_height="49dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="56dp"
         android:text="LOGIN"
         app:layout_constraintEnd_toEndOf="@+id/passLogin"
-        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/passLogin"
         app:layout_constraintTop_toBottomOf="@+id/passLogin" />
 
@@ -110,5 +110,17 @@
         app:layout_constraintHorizontal_bias="0.307"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <TextView
+        android:id="@+id/resetPassLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="4dp"
+        android:text="Forgot password?"
+        android:textColor="#FFFFFF"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/passLogin"
+        app:layout_constraintTop_toBottomOf="@+id/passLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
