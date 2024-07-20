@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/visitorListLayout"
     android:layout_width="match_parent"
@@ -7,9 +8,40 @@
     tools:context=".VisitorListFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Visitor list" />
+
+    <EditText
+        android:id="@+id/visListSearch"
+        android:layout_width="242dp"
+        android:layout_height="57dp"
+        android:ems="10"
+        android:hint="Search..."
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.443"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.059" />
+
+    <Button
+        android:id="@+id/visListSearchBtn"
+        android:layout_width="67dp"
+        android:layout_height="59dp"
+        app:icon="@drawable/baseline_search_24"
+        app:iconSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/visListSearch"
+        app:layout_constraintStart_toEndOf="@+id/visListSearch"
+        app:layout_constraintTop_toTopOf="@+id/visListSearch" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/visListRecyclerView"
+        android:layout_width="393dp"
+        android:layout_height="614dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/visListSearch"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/visitor_list_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

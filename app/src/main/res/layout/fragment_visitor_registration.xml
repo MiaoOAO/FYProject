@@ -9,8 +9,9 @@
 
     <EditText
         android:id="@+id/visName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="254dp"
+        android:layout_height="49dp"
+        android:background="@drawable/border"
         android:ems="10"
         android:hint="Visitor's name"
         android:inputType="text"
@@ -19,54 +20,56 @@
         app:layout_constraintHorizontal_bias="0.452"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.354" />
+        app:layout_constraintVertical_bias="0.318" />
 
     <EditText
         android:id="@+id/visPlateNo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="254dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/border"
         android:ems="10"
-        android:hint="Visitor's vehicle plate number"
+        android:hint="Visitor's car plate (WWW1234)"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="@+id/visName"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/visName"
         app:layout_constraintTop_toBottomOf="@+id/visName" />
 
     <EditText
         android:id="@+id/visPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="255dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/border"
         android:ems="10"
         android:hint="Visitor's phone number"
         android:inputType="phone"
         app:layout_constraintEnd_toEndOf="@+id/visPlateNo"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/visPlateNo"
         app:layout_constraintTop_toBottomOf="@+id/visPlateNo" />
 
     <TextView
         android:id="@+id/visDateTv"
-        android:layout_width="209dp"
-        android:layout_height="39dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="131dp"
+        android:layout_height="63dp"
+        android:layout_marginBottom="28dp"
         android:hint="Date..."
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/visName"
         app:layout_constraintEnd_toEndOf="@+id/visName"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.008"
         app:layout_constraintStart_toStartOf="@+id/visName" />
 
     <Button
         android:id="@+id/visSubmitBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="60dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/visPhone"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="@+id/visPhone"
         app:layout_constraintTop_toBottomOf="@+id/visPhone" />
 
@@ -83,13 +86,23 @@
 
     <Button
         android:id="@+id/visDateBtn"
-        android:layout_width="155dp"
-        android:layout_height="58dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="124dp"
+        android:layout_height="80dp"
         android:text="Pick the date"
         app:icon="@drawable/baseline_date_range_24"
         app:iconSize="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/visDateTv"
-        app:layout_constraintEnd_toEndOf="@+id/visDateTv" />
+        app:layout_constraintBottom_toBottomOf="@+id/visDateTv"
+        app:layout_constraintStart_toEndOf="@+id/visDateTv"
+        app:layout_constraintTop_toTopOf="@+id/visDateTv" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visitor Registration"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteX="71dp"
+        tools:layout_editor_absoluteY="51dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
