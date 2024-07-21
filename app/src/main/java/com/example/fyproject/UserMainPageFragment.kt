@@ -72,7 +72,6 @@ class UserMainPageFragment : Fragment() {
             updateToolbarTitle("Visitor List")
         }
 
-
         return view
     }
 

@@ -26,9 +26,9 @@ class VistorListAdapter(private val visitorList: List<visitor>) : RecyclerView.A
 
     override fun onBindViewHolder(holder: VistorListAdapter.VisitorViewHolder, position: Int) {
         val item = visitorList[position]
-        holder.date.text = item.name
+        holder.name.text = item.name
         holder.plateNo.text = item.plateNo
-        holder.date.text = item.visitDate
+        holder.date.text = item.VisitDate
     }
 
     override fun getItemCount(): Int {

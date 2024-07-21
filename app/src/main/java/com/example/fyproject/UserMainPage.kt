@@ -70,6 +70,11 @@ class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 changeFragment(ProfileFragment())
             }
 
+            R.id.scan_nav_menu-> {
+                setToolbarTitle("Scanner")
+                changeFragment(ScanPlateFragment())
+            }
+
             R.id.logout_nav_menu-> {
                 var intent = Intent(this, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
