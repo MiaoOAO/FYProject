@@ -8,6 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import com.example.fyproject.admin.AdminLoginActivity
 import com.example.fyproject.databinding.ActivityMainBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
@@ -42,6 +43,12 @@ class MainActivity : AppCompatActivity() {
         val signUp: Button = findViewById(R.id.signUp)
         val login: Button= findViewById(R.id.userLogin)
         val resetPass: TextView = findViewById(R.id.resetPassLogin)
+        val adminLogin: TextView = findViewById(R.id.adminLogin)
+
+        adminLogin.setOnClickListener{
+            val intent = Intent(this, AdminLoginActivity::class.java)
+          startActivity(intent)
+        }
 
         resetPass.setOnClickListener{
             showResetPasswordDialog()

@@ -50,6 +50,8 @@ dependencies {
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-firestore:25.0.0")
     implementation("androidx.activity:activity:1.8.0")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
+    implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -65,6 +67,7 @@ dependencies {
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
     // for adding cardview
     implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("com.google.firebase:firebase-storage:20.0.0")
 
 
 }

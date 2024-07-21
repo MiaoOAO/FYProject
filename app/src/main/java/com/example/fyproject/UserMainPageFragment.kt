@@ -1,8 +1,10 @@
 package com.example.fyproject
 
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +14,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.fyproject.adapter.ImageAdapter
 import com.example.fyproject.listener.UserMainPageListener
+import com.google.firebase.storage.FirebaseStorage
+import java.io.ByteArrayOutputStream
+import java.util.UUID
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -51,6 +56,7 @@ class UserMainPageFragment : Fragment() {
         val visitorList: Button= view.findViewById(R.id.visitorListBtn)
         val parkingRes:Button = view.findViewById(R.id.parkingResBtn)
         val parkingList:Button = view.findViewById(R.id.parkingListBtn)
+        val uploadImg:Button = view.findViewById(R.id.uploadImgBtn)
 
         visitorList.setOnClickListener{
             changeFragment(VisitorListFragment())
@@ -72,8 +78,35 @@ class UserMainPageFragment : Fragment() {
             updateToolbarTitle("Visitor List")
         }
 
+        uploadImg.setOnClickListener{
+//            uploadImage()
+        }
+
         return view
     }
+
+//    private fun uploadImage(image: Bitmap) {
+//        // Create a reference to the image storage location
+//        val storageRef = FirebaseStorage.getInstance().reference.child("images/${UUID.randomUUID()}")
+//
+//        // Convert the bitmap to a ByteArrayOutputStream
+//        val baos = ByteArrayOutputStream()
+//        image.compress(Bitmap.CompressFormat.JPEG, 80, baos)
+//        val data = baos.toByteArray()
+//
+//        // Upload the image data to Firebase Storage
+//        val uploadTask = storageRef.putBytes(data)
+//        uploadTask.addOnSuccessListener { snapshot ->
+//            // Get the download URL for the uploaded image
+//            val downloadUrl = snapshot.metadata?.reference?.downloadUrl
+//            // Update the image list with the new download URL
+//            imageList.add(downloadUrl.toString())
+//            adapter.notifyDataSetChanged()
+//        }.addOnFailureListener { exception ->
+//            // Handle upload failure
+//            Log.e("ImageUpload", "Error uploading image: ", exception)
+//        }
+//    }
 
 
     private fun changeFragment(frag : Fragment) {
