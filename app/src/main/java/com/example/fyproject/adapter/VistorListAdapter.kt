@@ -4,13 +4,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fyproject.R
 import com.example.fyproject.data.visitor
 import com.example.fyproject.listener.ItemClickListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObjects
+import org.w3c.dom.Text
 
 class VistorListAdapter(private val visitorList: List<visitor>, private val listener: ItemClickListener) : RecyclerView.Adapter<VistorListAdapter.VisitorViewHolder>() {
 
+    private lateinit var recyclerView: RecyclerView
+    private val db = FirebaseFirestore.getInstance()
     inner class VisitorViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         val name : TextView = itemView.findViewById(R.id.item_name)
         val plateNo : TextView = itemView.findViewById(R.id.item_plateNo)
@@ -44,11 +51,16 @@ class VistorListAdapter(private val visitorList: List<visitor>, private val list
         holder.name.text = item.name
         holder.plateNo.text = item.plateNo
         holder.date.text = item.VisitDate
+
+        if (item.status == 1) {
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.yellow))
+        } else {
+            holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
+        }
     }
 
     override fun getItemCount(): Int {
         return visitorList.size
     }
-
 
 }

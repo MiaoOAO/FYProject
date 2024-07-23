@@ -38,21 +38,38 @@ class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
         // Fetch data from Firestore
         fetchDataFromFirestore()
 
-        visSearchBtn.setOnClickListener{
+        visSearchBtn.setOnClickListener {
             val visSearch = visSearchTf.text.toString()
 
-
+            if (visSearch != ""){
             val collectionName = "visitor" // Replace with your collection name
             val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
 //        admin side --> val query = db.collection(collectionName)
-            val query = db.collection(collectionName).whereEqualTo("plateNo", visSearch).whereEqualTo("ownerId", userId)
+            val query = db.collection(collectionName).whereEqualTo("plateNo", visSearch)
+                .whereEqualTo("ownerId", userId)
             query.get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val dataList = task.result?.toObjects<visitor>() ?: emptyList()
                     setupRecyclerView(dataList)
                 } else {
                     // Handle any errors in data retrieval
+                }
+            }
+        }else{
+                refreshData()
+                val collectionName = "visitor" // Replace with your collection name
+                val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+//        admin side --> val query = db.collection(collectionName)
+                val query = db.collection(collectionName).whereEqualTo("ownerId", userId)
+                query.get().addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val dataList = task.result?.toObjects<visitor>() ?: emptyList()
+                        setupRecyclerView(dataList)
+                    } else {
+                        // Handle any errors in data retrieval
+                    }
                 }
             }
 
@@ -76,6 +93,11 @@ class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
             }
         }
     }
+
+    private fun refreshData() {
+        fetchDataFromFirestore()
+    }
+
 
     private fun setupRecyclerView(dataList: List<visitor>) {
         recyclerView.adapter = VistorListAdapter(dataList, this)
