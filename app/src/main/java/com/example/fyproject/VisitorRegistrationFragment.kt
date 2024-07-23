@@ -89,6 +89,7 @@ class VisitorRegistrationFragment : Fragment() {
                 "VisitDate" to selectedDate,
                 "status" to 0,
                 "checkInDate" to "",
+                "checkoutDate" to "",
                 "ownerId" to userId
             )
 

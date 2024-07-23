@@ -5,15 +5,15 @@
     android:id="@+id/visitorListLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VisitorListFragment"
-    android:windowSoftInputMode="adjustResize">
+    android:windowSoftInputMode="adjustResize"
+    tools:context=".VisitorListFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <EditText
         android:id="@+id/visListSearch"
         android:layout_width="242dp"
-        android:layout_height="57dp"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Search..."
         android:inputType="text"
@@ -38,10 +38,11 @@
         android:id="@+id/visListRecyclerView"
         android:layout_width="393dp"
         android:layout_height="614dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/visListSearch"
         app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/visitor_list_layout" />
 

@@ -56,7 +56,7 @@ class UserMainPageFragment : Fragment() {
         val visitorList: Button= view.findViewById(R.id.visitorListBtn)
         val parkingRes:Button = view.findViewById(R.id.parkingResBtn)
         val parkingList:Button = view.findViewById(R.id.parkingListBtn)
-        val uploadImg:Button = view.findViewById(R.id.uploadImgBtn)
+//        val uploadImg:Button = view.findViewById(R.id.uploadImgBtn)
 
         visitorList.setOnClickListener{
             changeFragment(VisitorListFragment())
@@ -78,9 +78,9 @@ class UserMainPageFragment : Fragment() {
             updateToolbarTitle("Visitor List")
         }
 
-        uploadImg.setOnClickListener{
-//            uploadImage()
-        }
+//        uploadImg.setOnClickListener{
+////            uploadImage()
+//        }
 
         return view
     }

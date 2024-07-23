@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fyproject.adapter.VistorListAdapter
 import com.example.fyproject.data.visitor
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObjects
 
@@ -26,6 +29,7 @@ class VisitorListFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private val db = FirebaseFirestore.getInstance()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,18 +37,44 @@ class VisitorListFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_visitor_list, container, false)
 
+        val visSearchBtn: Button = view.findViewById(R.id.visListSearchBtn)
+        val visSearchTf: TextView = view.findViewById(R.id.visListSearch)
+
         recyclerView = view.findViewById(R.id.visListRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // Fetch data from Firestore
         fetchDataFromFirestore()
 
+        visSearchBtn.setOnClickListener{
+            val visSearch = visSearchTf.text.toString()
+
+
+            val collectionName = "visitor" // Replace with your collection name
+            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+//        admin side --> val query = db.collection(collectionName)
+            val query = db.collection(collectionName).whereEqualTo("plateNo", visSearch).whereEqualTo("ownerId", userId)
+            query.get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val dataList = task.result?.toObjects<visitor>() ?: emptyList()
+                    setupRecyclerView(dataList)
+                } else {
+                    // Handle any errors in data retrieval
+                }
+            }
+
+        }
+
         return view
     }
 
     private fun fetchDataFromFirestore() {
         val collectionName = "visitor" // Replace with your collection name
-        val query = db.collection(collectionName)
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+//        admin side --> val query = db.collection(collectionName)
+        val query = db.collection(collectionName).whereEqualTo("ownerId", userId)
         query.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val dataList = task.result?.toObjects<visitor>() ?: emptyList()

@@ -24,55 +24,63 @@
 
     <Button
         android:id="@+id/visitorRegBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
         android:text="Visitor Pre-Registration"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_app_registration_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintHorizontal_bias="0.117"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPager2"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintVertical_bias="0.135" />
 
     <Button
         android:id="@+id/visitorListBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="8dp"
         android:text="Visitor List"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/visitorRegBtn" />
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_list_alt_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/visitorRegBtn"
+        app:layout_constraintStart_toEndOf="@+id/visitorRegBtn"
+        app:layout_constraintTop_toTopOf="@+id/visitorRegBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/parkingResBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="48dp"
         android:text="Parking Reservation"
-        app:layout_constraintEnd_toEndOf="@+id/visitorListBtn"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintStart_toStartOf="@+id/visitorListBtn"
-        app:layout_constraintTop_toBottomOf="@+id/visitorListBtn" />
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_local_parking_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/visitorRegBtn"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/visitorRegBtn"
+        app:layout_constraintTop_toBottomOf="@+id/visitorRegBtn" />
 
     <Button
         android:id="@+id/parkingListBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
         android:text="Parking Reservation List"
-        app:layout_constraintEnd_toEndOf="@+id/parkingResBtn"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toStartOf="@+id/parkingResBtn"
-        app:layout_constraintTop_toBottomOf="@+id/parkingResBtn" />
-
-    <Button
-        android:id="@+id/uploadImgBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_checklist_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/visitorListBtn"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/visitorListBtn"
+        app:layout_constraintTop_toTopOf="@+id/parkingResBtn" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
