@@ -7,12 +7,27 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fyproject.R
 import com.example.fyproject.data.visitor
+import com.example.fyproject.listener.ItemClickListener
 
-class VistorListAdapter(private val visitorList: List<visitor>) : RecyclerView.Adapter<VistorListAdapter.VisitorViewHolder>() {
-    class VisitorViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
+class VistorListAdapter(private val visitorList: List<visitor>, private val listener: ItemClickListener) : RecyclerView.Adapter<VistorListAdapter.VisitorViewHolder>() {
+
+    inner class VisitorViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
         val name : TextView = itemView.findViewById(R.id.item_name)
         val plateNo : TextView = itemView.findViewById(R.id.item_plateNo)
         val date : TextView = itemView.findViewById(R.id.item_date)
+
+        init {
+            itemView.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    listener.onItemClick(visitorList[position])
+                }
+            }
+        }
+    }
+
+    interface ItemClickListener {
+        fun onItemClick(visitor: visitor)
     }
 
     override fun onCreateViewHolder(

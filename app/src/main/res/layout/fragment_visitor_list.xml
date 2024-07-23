@@ -5,7 +5,6 @@
     android:id="@+id/visitorListLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:windowSoftInputMode="adjustResize"
     tools:context=".VisitorListFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -29,7 +28,7 @@
         android:layout_width="67dp"
         android:layout_height="59dp"
         app:icon="@drawable/baseline_search_24"
-        app:iconSize="22sp"
+        app:iconSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/visListSearch"
         app:layout_constraintStart_toEndOf="@+id/visListSearch"
         app:layout_constraintTop_toTopOf="@+id/visListSearch" />

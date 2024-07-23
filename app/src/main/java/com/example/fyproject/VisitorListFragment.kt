@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fyproject.adapter.VistorListAdapter
@@ -25,7 +26,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [VisitorListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class VisitorListFragment : Fragment() {
+class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
     private val db = FirebaseFirestore.getInstance()
@@ -86,7 +87,36 @@ class VisitorListFragment : Fragment() {
     }
 
     private fun setupRecyclerView(dataList: List<visitor>) {
-        recyclerView.adapter = VistorListAdapter(dataList)
+        recyclerView.adapter = VistorListAdapter(dataList, this)
     }
+
+    override fun onItemClick(visitor: visitor) {
+
+        val selectedVisitor = arguments?.getSerializable("selectedVisitor") as? visitor
+        if (selectedVisitor != null) {
+            Toast.makeText(requireContext(),"I got the result", Toast.LENGTH_SHORT).show()
+            val bundle = Bundle()
+            bundle.putString("plateNo", selectedVisitor.plateNo)
+//            bundle.putSerializable("selectedVisitor", visitor) // Assuming visitor is Serializable
+            VisitorDetailsFragment().arguments = bundle
+
+            val transaction = activity?.supportFragmentManager?.beginTransaction()
+            transaction?.replace(R.id.fragmentContainer, VisitorDetailsFragment())
+            transaction?.addToBackStack(null)
+            transaction?.commit()
+            // ... rest of your code
+        } else {
+            Toast.makeText(requireContext(),"nothing", Toast.LENGTH_SHORT).show()
+        }
+//        val bundle = Bundle()
+//        bundle.putSerializable("selectedVisitor", visitor) // Assuming visitor is Serializable
+//        VisitorDetailsFragment().arguments = bundle
+//
+//        val transaction = activity?.supportFragmentManager?.beginTransaction()
+//        transaction?.replace(R.id.fragmentContainer, VisitorDetailsFragment())
+//        transaction?.addToBackStack(null)
+//        transaction?.commit()
+    }
+
 
 }

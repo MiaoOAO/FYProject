@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
@@ -10,7 +11,37 @@
         android:id="@+id/visDetailsName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="124dp" />
+        android:layout_marginTop="108dp"
+        android:text="VisitorName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/visDetailsPlate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="VisitorPlate"
+        app:layout_constraintStart_toStartOf="@+id/visDetailsName"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsName" />
+
+    <TextView
+        android:id="@+id/visDetailsOwner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="OwnerId"
+        app:layout_constraintStart_toStartOf="@+id/visDetailsPlate"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsPlate" />
+
+    <TextView
+        android:id="@+id/visDetailsVisitDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="VisitDate"
+        app:layout_constraintStart_toStartOf="@+id/visDetailsOwner"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsOwner" />
 </androidx.constraintlayout.widget.ConstraintLayout>
