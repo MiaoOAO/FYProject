@@ -80,16 +80,20 @@ class VisitorRegistrationFragment : Fragment() {
             val vPhone = view.findViewById<TextView?>(R.id.visPhone).text.toString()
 //            val vDate = view.findViewById<TextView?>(R.id.visDate).text.toString()
 
+            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
             val visitorMap = hashMapOf(
                 "name" to vName,
                 "plateNo" to vPlate,
                 "phone" to vPhone,
-                "VisitDate" to selectedDate
+                "VisitDate" to selectedDate,
+                "status" to 0,
+                "checkInDate" to "",
+                "ownerId" to userId
             )
 
-            val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
-            fStore.collection("visitor").document(userId).set(visitorMap).addOnSuccessListener {
+            fStore.collection("visitor").document().set(visitorMap).addOnSuccessListener {
                 Toast.makeText(requireContext(), "Visitor registered", Toast.LENGTH_SHORT).show()
             }
                 .addOnFailureListener{
