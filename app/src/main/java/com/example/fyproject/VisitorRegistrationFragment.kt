@@ -94,11 +94,21 @@ class VisitorRegistrationFragment : Fragment() {
             )
 
 
-            fStore.collection("visitor").document().set(visitorMap).addOnSuccessListener {
-                Toast.makeText(requireContext(), "Visitor registered", Toast.LENGTH_SHORT).show()
-            }
-                .addOnFailureListener{
-                    Toast.makeText(requireContext(), "Registration failed", Toast.LENGTH_SHORT).show()
+            fStore.collection("visitor")
+                .add(visitorMap)
+                .addOnSuccessListener { documentReference ->
+                    val visitorId = documentReference.id
+                    val updatedVisitorMap = visitorMap.plus("visitorId" to visitorId)
+                    documentReference.set(updatedVisitorMap)
+                        .addOnSuccessListener {
+                            Toast.makeText(requireContext(), "Visitor registered", Toast.LENGTH_SHORT).show()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(requireContext(), "Visitor register failed", Toast.LENGTH_SHORT).show()
+                        }
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(requireContext(), "failed", Toast.LENGTH_SHORT).show()
                 }
 
         }

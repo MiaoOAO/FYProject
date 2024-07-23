@@ -15,17 +15,8 @@ import com.example.fyproject.data.visitor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObjects
+import java.io.Serializable
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [VisitorListFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
 
     private lateinit var recyclerView: RecyclerView
@@ -91,23 +82,20 @@ class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
     }
 
     override fun onItemClick(visitor: visitor) {
+            val bundle = Bundle();
 
-        val selectedVisitor = arguments?.getSerializable("selectedVisitor") as? visitor
-        if (selectedVisitor != null) {
-            Toast.makeText(requireContext(),"I got the result", Toast.LENGTH_SHORT).show()
-            val bundle = Bundle()
-            bundle.putString("plateNo", selectedVisitor.plateNo)
-//            bundle.putSerializable("selectedVisitor", visitor) // Assuming visitor is Serializable
-            VisitorDetailsFragment().arguments = bundle
+            val visitorId = visitor.visitorId
+            bundle.putString("visitor_id", visitorId)
 
-            val transaction = activity?.supportFragmentManager?.beginTransaction()
-            transaction?.replace(R.id.fragmentContainer, VisitorDetailsFragment())
+
+            val fragment = VisitorDetailsFragment(); // Create new fragment
+            fragment.setArguments(bundle);
+
+            val transaction = activity?.supportFragmentManager?.beginTransaction();
+            transaction?.replace(R.id.fragmentContainer, fragment)
             transaction?.addToBackStack(null)
             transaction?.commit()
-            // ... rest of your code
-        } else {
-            Toast.makeText(requireContext(),"nothing", Toast.LENGTH_SHORT).show()
-        }
+
 //        val bundle = Bundle()
 //        bundle.putSerializable("selectedVisitor", visitor) // Assuming visitor is Serializable
 //        VisitorDetailsFragment().arguments = bundle
