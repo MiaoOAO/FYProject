@@ -5,55 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ParkingReservationFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ParkingReservationFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private val db = FirebaseFirestore.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_parking_reservation, container, false)
+        val view = inflater.inflate(R.layout.fragment_parking_reservation, container, false)
+
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+        val query = db.collection("visitor").whereEqualTo("ownerId", userId)
+
+        query.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val plateNumbers = task.result.documents.map { it.getString("plateNo")!! }
+                // create an adapter for the spinner
+                val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, plateNumbers)
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+                // set the adapter to the spinner
+                val spinner = view.findViewById<Spinner>(R.id.plate_number_spinner)
+                spinner.adapter = adapter
+
+                // handle spinner selection
+                spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                        val selectedPlateNumber = plateNumbers[position]
+                        // do something with the selected plate number
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                        // do something when nothing is selected
+                    }
+                }
+            } else {
+                // handle error
+                Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ParkingReservationFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            ParkingReservationFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }
