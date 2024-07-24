@@ -44,7 +44,7 @@ class VisitorRegistrationFragment : Fragment() {
         fStore = FirebaseFirestore.getInstance()
 
         val vBtn:Button = view.findViewById(R.id.visSubmitBtn)
-        val sBtn:Button = view.findViewById(R.id.searchVisBtn)
+//        val sBtn:Button = view.findViewById(R.id.searchVisBtn)
 
 
         //Date Picker by using dialog method
@@ -54,6 +54,8 @@ class VisitorRegistrationFragment : Fragment() {
         val initialYear = calendar.get(Calendar.YEAR)
         val initialMonth = calendar.get(Calendar.MONTH)
         val initialDay = calendar.get(Calendar.DAY_OF_MONTH)
+
+        val today = Calendar.getInstance() // Get today's date
 
         datePickerDialog = DatePickerDialog(requireContext(),
             { view, year, monthOfYear, dayOfMonth ->
@@ -65,6 +67,8 @@ class VisitorRegistrationFragment : Fragment() {
             initialYear, initialMonth, initialDay
         )
 
+        datePickerDialog.datePicker.minDate = today.timeInMillis
+
         // (Optional) Set onClick listener on a button to show the dialog
         val selectDateButton = view.findViewById<Button>(R.id.visDateBtn)
         selectDateButton.setOnClickListener {
@@ -74,116 +78,178 @@ class VisitorRegistrationFragment : Fragment() {
 
 //      add visitor registration to firestore
         vBtn.setOnClickListener{
-
             val vName = view.findViewById<TextView?>(R.id.visName).text.toString()
-            val vPlate = view.findViewById<TextView?>(R.id.visPlateNo).text.toString()
+            val vPlate = view.findViewById<TextView?>(R.id.visPlateNo).text.toString().uppercase()
             val vPhone = view.findViewById<TextView?>(R.id.visPhone).text.toString()
+
+            if(vName != "" && vPlate != "" && vPhone != "") {
+
+                val dialog = AlertDialog.Builder(requireContext())
+                    .setTitle("Confimation")
+                    .setMessage("Visitor Name : $vName \nVisitor Plate : $vPlate \nVisitor Phone : $vPhone \nVisit Date : $selectedDate")
+                    .setPositiveButton("Submit") { dialog, which ->
+                        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+                        val visitorMap = hashMapOf(
+                            "name" to vName,
+                            "plateNo" to vPlate,
+                            "phone" to vPhone,
+                            "VisitDate" to selectedDate,
+                            "status" to 0,
+                            "checkInDate" to "",
+                            "checkoutDate" to "",
+                            "ownerId" to userId
+                        )
+
+
+                        fStore.collection("visitor")
+                            .add(visitorMap)
+                            .addOnSuccessListener { documentReference ->
+                                val visitorId = documentReference.id
+                                val updatedVisitorMap = visitorMap.plus("visitorId" to visitorId)
+                                documentReference.set(updatedVisitorMap)
+                                    .addOnSuccessListener {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Visitor registered",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Visitor register failed",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(requireContext(), "failed", Toast.LENGTH_SHORT).show()
+                            }
+
+                    }
+                    .setNegativeButton("Cancel", null)
+                    .create()
+                dialog.show()
+
+            }else{
+                Toast.makeText(requireContext(), "text field cannot be blank", Toast.LENGTH_SHORT).show()
+            }
+//            confirmationDialog(view)
+
+
+
+//            val vName = view.findViewById<TextView?>(R.id.visName).text.toString()
+//            val vPlate = view.findViewById<TextView?>(R.id.visPlateNo).text.toString()
+//            val vPhone = view.findViewById<TextView?>(R.id.visPhone).text.toString()
 //            val vDate = view.findViewById<TextView?>(R.id.visDate).text.toString()
 
-            val userId = FirebaseAuth.getInstance().currentUser!!.uid
-
-            val visitorMap = hashMapOf(
-                "name" to vName,
-                "plateNo" to vPlate,
-                "phone" to vPhone,
-                "VisitDate" to selectedDate,
-                "status" to 0,
-                "checkInDate" to "",
-                "checkoutDate" to "",
-                "ownerId" to userId
-            )
-
-
-            fStore.collection("visitor")
-                .add(visitorMap)
-                .addOnSuccessListener { documentReference ->
-                    val visitorId = documentReference.id
-                    val updatedVisitorMap = visitorMap.plus("visitorId" to visitorId)
-                    documentReference.set(updatedVisitorMap)
-                        .addOnSuccessListener {
-                            Toast.makeText(requireContext(), "Visitor registered", Toast.LENGTH_SHORT).show()
-                        }
-                        .addOnFailureListener { e ->
-                            Toast.makeText(requireContext(), "Visitor register failed", Toast.LENGTH_SHORT).show()
-                        }
-                }
-                .addOnFailureListener { e ->
-                    Toast.makeText(requireContext(), "failed", Toast.LENGTH_SHORT).show()
-                }
+//            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+//
+//            val visitorMap = hashMapOf(
+//                "name" to vName,
+//                "plateNo" to vPlate,
+//                "phone" to vPhone,
+//                "VisitDate" to selectedDate,
+//                "status" to 0,
+//                "checkInDate" to "",
+//                "checkoutDate" to "",
+//                "ownerId" to userId
+//            )
+//
+//
+//            fStore.collection("visitor")
+//                .add(visitorMap)
+//                .addOnSuccessListener { documentReference ->
+//                    val visitorId = documentReference.id
+//                    val updatedVisitorMap = visitorMap.plus("visitorId" to visitorId)
+//                    documentReference.set(updatedVisitorMap)
+//                        .addOnSuccessListener {
+//                            Toast.makeText(requireContext(), "Visitor registered", Toast.LENGTH_SHORT).show()
+//                        }
+//                        .addOnFailureListener { e ->
+//                            Toast.makeText(requireContext(), "Visitor register failed", Toast.LENGTH_SHORT).show()
+//                        }
+//                }
+//                .addOnFailureListener { e ->
+//                    Toast.makeText(requireContext(), "failed", Toast.LENGTH_SHORT).show()
+//                }
 
         }
 
 
 
-        sBtn.setOnClickListener{
-            //search vehicle plate function
-            checkPlateNumberDialog()
-        }
-
-
-
-
-
+//        sBtn.setOnClickListener{
+//            //search vehicle plate function
+//            checkPlateNumberDialog()
+//        }
 
 
         return view
     }
 
-    private fun checkPlateNumberDialog() {
-        val plateNoInput = EditText(requireContext())
-        val dialog = AlertDialog.Builder(requireContext())
-            .setTitle("Check Car Plate Number")
-            .setMessage("Enter Car Plate Number to check: ")
-            .setView(plateNoInput)
-            .setPositiveButton("Check") { dialog, which ->
-                val plateNoCheck = plateNoInput.text.toString().trim()
 
-                val visitorRef = fStore.collection("visitor")
-
-                if (plateNoCheck.isNotEmpty()) {
-                    val query = if (plateNoCheck.isNotEmpty()) {
-                        visitorRef.whereEqualTo("plateNo", plateNoCheck)  // Filter by plateNo
-                    } else {
-                        visitorRef  // Keep filtering until the end, retrieve all documents
-                    }
-
-                    query.get()
-                        .addOnSuccessListener { documents ->
-                            if (documents.isEmpty) {
-                                Toast.makeText(
-                                    requireContext(),
-                                    "No plate number found",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            } else {
-                                val plateNumbers = mutableListOf<String>()
-                                for (document in documents) {
-                                    val plateNo = document.getString("plateNo")
-                                    if (plateNo != null) {
-                                        plateNumbers.add(plateNo)
-                                    }
-                                }
-
-                                Toast.makeText(
-                                    requireContext(),
-                                    "Plate Number: $plateNumbers found",
-                                    Toast.LENGTH_SHORT
-                                ).show()
-                            }
-                        }
-                        .addOnFailureListener { exception ->
-                            Toast.makeText(requireContext(), "Search failed", Toast.LENGTH_SHORT)
-                                .show()
-                        }
-
-                }else{
-                    Toast.makeText(requireContext(), "Input cannot be blank", Toast.LENGTH_SHORT)
-                        .show()
-                }
-            }
-            .setNegativeButton("Cancel", null)
-            .create()
-        dialog.show()
-    }
+//    private fun confirmationDialog(view: View) {
+//
+//    }
 
 }
+
+
+//    private fun checkPlateNumberDialog() {
+//        val plateNoInput = EditText(requireContext())
+//        val dialog = AlertDialog.Builder(requireContext())
+//            .setTitle("Check Car Plate Number")
+//            .setMessage("Enter Car Plate Number to check: ")
+//            .setView(plateNoInput)
+//            .setPositiveButton("Check") { dialog, which ->
+//                val plateNoCheck = plateNoInput.text.toString().trim()
+//
+//                val visitorRef = fStore.collection("visitor")
+//
+//                if (plateNoCheck.isNotEmpty()) {
+//                    val query = if (plateNoCheck.isNotEmpty()) {
+//                        visitorRef.whereEqualTo("plateNo", plateNoCheck)  // Filter by plateNo
+//                    } else {
+//                        visitorRef  // Keep filtering until the end, retrieve all documents
+//                    }
+//
+//                    query.get()
+//                        .addOnSuccessListener { documents ->
+//                            if (documents.isEmpty) {
+//                                Toast.makeText(
+//                                    requireContext(),
+//                                    "No plate number found",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            } else {
+//                                val plateNumbers = mutableListOf<String>()
+//                                for (document in documents) {
+//                                    val plateNo = document.getString("plateNo")
+//                                    if (plateNo != null) {
+//                                        plateNumbers.add(plateNo)
+//                                    }
+//                                }
+//
+//                                Toast.makeText(
+//                                    requireContext(),
+//                                    "Plate Number: $plateNumbers found",
+//                                    Toast.LENGTH_SHORT
+//                                ).show()
+//                            }
+//                        }
+//                        .addOnFailureListener { exception ->
+//                            Toast.makeText(requireContext(), "Search failed", Toast.LENGTH_SHORT)
+//                                .show()
+//                        }
+//
+//                }else{
+//                    Toast.makeText(requireContext(), "Input cannot be blank", Toast.LENGTH_SHORT)
+//                        .show()
+//                }
+//            }
+//            .setNegativeButton("Cancel", null)
+//            .create()
+//        dialog.show()
+//    }
+

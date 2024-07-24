@@ -52,11 +52,16 @@ class VistorListAdapter(private val visitorList: List<visitor>, private val list
         holder.plateNo.text = item.plateNo
         holder.date.text = item.VisitDate
 
-        if (item.status == 1) {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.yellow))
-        } else {
-            holder.itemView.setBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
-        }
+//        //val cornerRadius = resources.getDimensionPixelSize(R.dimen.corner_radius) // Replace with your desired corner radius
+//        val backgroundDrawable = ContextCompat.getDrawable(holder.itemView.context, R.drawable.border) // Replace with your item background drawable
+//
+//        if (item.status == 1) {
+//            backgroundDrawable?.setTint(ContextCompat.getColor(holder.itemView.context, R.color.yellow))
+//        } else {
+//            backgroundDrawable?.setTint(ContextCompat.getColor(holder.itemView.context, R.color.teal_700))
+//        }
+//
+//        holder.itemView.background = backgroundDrawable
     }
 
     override fun getItemCount(): Int {

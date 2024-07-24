@@ -39,7 +39,7 @@ class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
         fetchDataFromFirestore()
 
         visSearchBtn.setOnClickListener {
-            val visSearch = visSearchTf.text.toString()
+            val visSearch = visSearchTf.text.toString().uppercase()
 
             if (visSearch != ""){
             val collectionName = "visitor" // Replace with your collection name
