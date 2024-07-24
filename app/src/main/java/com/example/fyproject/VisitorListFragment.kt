@@ -34,6 +34,7 @@ class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
 
         recyclerView = view.findViewById(R.id.visListRecyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.setHasFixedSize(true)
 
         // Fetch data from Firestore
         fetchDataFromFirestore()

@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".VisitorRegistrationFragment">
 
+    <View
+        android:id="@+id/view2"
+        android:layout_width="364dp"
+        android:layout_height="390dp"
+        android:layout_marginTop="24dp"
+        android:background="#C2E698"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
     <EditText
         android:id="@+id/visName"
         android:layout_width="275dp"
@@ -56,6 +67,7 @@
         android:layout_marginStart="16dp"
         android:hint="Date..."
         android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/visDateBtn"
         app:layout_constraintStart_toEndOf="@+id/visDateBtn"
         app:layout_constraintTop_toTopOf="@+id/visDateBtn"
@@ -81,9 +93,10 @@
         android:text="Pick the date"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_date_range_24"
-        app:iconSize="24dp"
+        app:iconSize="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        app:strokeColor="#AC5555" />
 
     <TextView
         android:id="@+id/textView6"

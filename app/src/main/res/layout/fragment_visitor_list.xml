@@ -5,6 +5,7 @@
     android:id="@+id/visitorListLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     tools:context=".VisitorListFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,14 +14,15 @@
         android:id="@+id/visListSearch"
         android:layout_width="242dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="120dp"
         android:ems="10"
         android:hint="Plate number search..."
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.301"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.084" />
 
     <Button
         android:id="@+id/visListSearchBtn"
@@ -37,14 +39,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/visListRecyclerView"
-        android:layout_width="393dp"
-        android:layout_height="614dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="387dp"
+        android:layout_height="561dp"
+        android:isScrollContainer="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/visListSearch"
-        app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/visitor_list_layout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

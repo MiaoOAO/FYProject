@@ -114,6 +114,11 @@ class VisitorRegistrationFragment : Fragment() {
                                             "Visitor registered",
                                             Toast.LENGTH_SHORT
                                         ).show()
+
+                                        val transaction = activity?.supportFragmentManager?.beginTransaction()
+                                        transaction?.replace(R.id.fragmentContainer, UserMainPageFragment())
+                                        transaction?.addToBackStack(null)
+                                        transaction?.commit()
                                     }
                                     .addOnFailureListener { e ->
                                         Toast.makeText(

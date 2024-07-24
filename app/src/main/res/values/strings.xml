@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Navigation Drawer</string>
+    <string name="app_name">UAndMe</string>
     <!-- to toggle the open close button of the navigation drawer -->
     <string name="nav_open">Open Drawer</string>
     <string name="nav_close">Close Drawer</string>
