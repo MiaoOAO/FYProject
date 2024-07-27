@@ -74,8 +74,10 @@ class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             R.id.scan_nav_menu-> {
-                setToolbarTitle("Scanner")
-                changeFragment(ScanPlateFragment())
+//                setToolbarTitle("Scanner")
+//                changeFragment(ScanPlateFragment())
+                val intent = Intent(this, ScanPlateActivity::class.java)
+                startActivity(intent)
             }
 
             R.id.logout_nav_menu-> {
