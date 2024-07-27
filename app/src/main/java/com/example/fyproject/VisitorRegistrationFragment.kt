@@ -2,20 +2,17 @@ package com.example.fyproject
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.fyproject.databinding.ActivityRegistrationBinding
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
-import java.util.Date
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,8 +41,6 @@ class VisitorRegistrationFragment : Fragment() {
         fStore = FirebaseFirestore.getInstance()
 
         val vBtn:Button = view.findViewById(R.id.visSubmitBtn)
-//        val sBtn:Button = view.findViewById(R.id.searchVisBtn)
-
 
         //Date Picker by using dialog method
         val dateLabel = view.findViewById<TextView>(R.id.visDateTv)
@@ -99,7 +94,8 @@ class VisitorRegistrationFragment : Fragment() {
                             "checkInDate" to "",
                             "checkoutDate" to "",
                             "parkingReserveDate" to "",
-                            "ownerId" to userId
+                            "ownerId" to userId,
+                            "parkingStatus" to ""
                         )
 
 
@@ -141,121 +137,15 @@ class VisitorRegistrationFragment : Fragment() {
             }else{
                 Toast.makeText(requireContext(), "text field cannot be blank", Toast.LENGTH_SHORT).show()
             }
-//            confirmationDialog(view)
-
-
-
-//            val vName = view.findViewById<TextView?>(R.id.visName).text.toString()
-//            val vPlate = view.findViewById<TextView?>(R.id.visPlateNo).text.toString()
-//            val vPhone = view.findViewById<TextView?>(R.id.visPhone).text.toString()
-//            val vDate = view.findViewById<TextView?>(R.id.visDate).text.toString()
-
-//            val userId = FirebaseAuth.getInstance().currentUser!!.uid
-//
-//            val visitorMap = hashMapOf(
-//                "name" to vName,
-//                "plateNo" to vPlate,
-//                "phone" to vPhone,
-//                "VisitDate" to selectedDate,
-//                "status" to 0,
-//                "checkInDate" to "",
-//                "checkoutDate" to "",
-//                "ownerId" to userId
-//            )
-//
-//
-//            fStore.collection("visitor")
-//                .add(visitorMap)
-//                .addOnSuccessListener { documentReference ->
-//                    val visitorId = documentReference.id
-//                    val updatedVisitorMap = visitorMap.plus("visitorId" to visitorId)
-//                    documentReference.set(updatedVisitorMap)
-//                        .addOnSuccessListener {
-//                            Toast.makeText(requireContext(), "Visitor registered", Toast.LENGTH_SHORT).show()
-//                        }
-//                        .addOnFailureListener { e ->
-//                            Toast.makeText(requireContext(), "Visitor register failed", Toast.LENGTH_SHORT).show()
-//                        }
-//                }
-//                .addOnFailureListener { e ->
-//                    Toast.makeText(requireContext(), "failed", Toast.LENGTH_SHORT).show()
-//                }
 
         }
-
-
-
-//        sBtn.setOnClickListener{
-//            //search vehicle plate function
-//            checkPlateNumberDialog()
-//        }
-
 
         return view
     }
 
 
-//    private fun confirmationDialog(view: View) {
-//
-//    }
-
 }
 
 
-//    private fun checkPlateNumberDialog() {
-//        val plateNoInput = EditText(requireContext())
-//        val dialog = AlertDialog.Builder(requireContext())
-//            .setTitle("Check Car Plate Number")
-//            .setMessage("Enter Car Plate Number to check: ")
-//            .setView(plateNoInput)
-//            .setPositiveButton("Check") { dialog, which ->
-//                val plateNoCheck = plateNoInput.text.toString().trim()
-//
-//                val visitorRef = fStore.collection("visitor")
-//
-//                if (plateNoCheck.isNotEmpty()) {
-//                    val query = if (plateNoCheck.isNotEmpty()) {
-//                        visitorRef.whereEqualTo("plateNo", plateNoCheck)  // Filter by plateNo
-//                    } else {
-//                        visitorRef  // Keep filtering until the end, retrieve all documents
-//                    }
-//
-//                    query.get()
-//                        .addOnSuccessListener { documents ->
-//                            if (documents.isEmpty) {
-//                                Toast.makeText(
-//                                    requireContext(),
-//                                    "No plate number found",
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//                            } else {
-//                                val plateNumbers = mutableListOf<String>()
-//                                for (document in documents) {
-//                                    val plateNo = document.getString("plateNo")
-//                                    if (plateNo != null) {
-//                                        plateNumbers.add(plateNo)
-//                                    }
-//                                }
-//
-//                                Toast.makeText(
-//                                    requireContext(),
-//                                    "Plate Number: $plateNumbers found",
-//                                    Toast.LENGTH_SHORT
-//                                ).show()
-//                            }
-//                        }
-//                        .addOnFailureListener { exception ->
-//                            Toast.makeText(requireContext(), "Search failed", Toast.LENGTH_SHORT)
-//                                .show()
-//                        }
-//
-//                }else{
-//                    Toast.makeText(requireContext(), "Input cannot be blank", Toast.LENGTH_SHORT)
-//                        .show()
-//                }
-//            }
-//            .setNegativeButton("Cancel", null)
-//            .create()
-//        dialog.show()
-//    }
+
 

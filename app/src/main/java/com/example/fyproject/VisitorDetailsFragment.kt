@@ -2,7 +2,7 @@ package com.example.fyproject
 
 import android.graphics.Color
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +10,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import android.text.util.Linkify
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,6 +44,7 @@ class VisitorDetailsFragment : Fragment() {
         val visDate = view.findViewById<TextView>(R.id.visDetailsVisitDate)
         val visPhone = view.findViewById<TextView>(R.id.visDetailsPhone)
         val visDelete = view.findViewById<Button>(R.id.visDetailsDelButton)
+        val parkingResDelete = view.findViewById<Button>(R.id.parkingResCancelBtn)
 
         val selectedVisitor = arguments?.getString("visitor_id")
 
@@ -61,6 +62,7 @@ class VisitorDetailsFragment : Fragment() {
                         val checkin = data["checkInDate"] as String
                         val name = data["name"] as String
                         val phone = data["phone"] as String
+                        val status = data["parkingStatus"] as String
 
                         // Update UI elements with retrieved data
                         visPlate.text = plate
@@ -68,6 +70,13 @@ class VisitorDetailsFragment : Fragment() {
                         visCheckin.text = checkin
                         visName.text = name
                         visPhone.text = phone
+
+                        if (status == "1") {
+                            parkingResDelete.visibility = View.VISIBLE
+                        } else {
+                            parkingResDelete.visibility = View.INVISIBLE
+                        }
+
 
                         if(visCheckin.text == ""){
                             visCheckin.text = "Visitor haven't check-in yet"
@@ -122,6 +131,44 @@ class VisitorDetailsFragment : Fragment() {
                 .create()
             dialog.show()
 
+        }
+
+        parkingResDelete.setOnClickListener{
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle("Confimation")
+                .setPositiveButton("Yes, Delete") { dialog, which ->
+
+                    selectedVisitor?.let { visitorId ->
+                        val docRef = fStore.collection("visitor").document(visitorId)
+
+                        val updates = hashMapOf<String, Any>(
+                            "parkingReserveDate" to "",
+                            "parkingStatus" to ""
+                        )
+
+                        docRef.update(updates)
+                            .addOnSuccessListener {
+                                // Document deleted successfully
+                                Toast.makeText(requireContext(), "Parking Reservation cancelled", Toast.LENGTH_SHORT).show()
+                                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                                transaction?.replace(R.id.fragmentContainer, ParkingListFragment())
+                                transaction?.addToBackStack(null)
+                                transaction?.commit()
+                            }
+                            .addOnFailureListener { exception ->
+                                // Deletion failed
+                                Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+                            }
+                    } ?: run {
+                        // Handle case where selectedVisitor is null
+                        Toast.makeText(requireContext(), "No visitor selected", Toast.LENGTH_SHORT).show()
+                    }
+
+
+                }
+                .setNegativeButton("Cancel", null)
+                .create()
+            dialog.show()
         }
 
         return view

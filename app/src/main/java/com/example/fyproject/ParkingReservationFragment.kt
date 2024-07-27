@@ -1,9 +1,7 @@
 package com.example.fyproject
 
-import android.graphics.Color
 import android.os.Bundle
 import android.text.util.Linkify
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +12,9 @@ import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-
 
 
 class ParkingReservationFragment : Fragment() {
@@ -42,7 +40,7 @@ class ParkingReservationFragment : Fragment() {
 
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
-        val query = db.collection("visitor").whereEqualTo("ownerId", userId)
+        val query = db.collection("visitor").whereEqualTo("ownerId", userId).whereEqualTo("parkingStatus", "")
 
         query.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -136,6 +134,7 @@ class ParkingReservationFragment : Fragment() {
                                 val documentReference = document.reference
                                 val data = HashMap<String, Any>()
                                 data["parkingReserveDate"] = visitDateUpdate
+                                data["parkingStatus"] = "1"
 
 
                                 documentReference.update(data)
