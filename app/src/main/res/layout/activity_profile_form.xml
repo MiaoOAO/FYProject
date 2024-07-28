@@ -5,16 +5,37 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F6EEEE"
     tools:context=".ProfileFormActivity">
 
     <View
-        android:id="@+id/view4"
-        android:layout_width="339dp"
-        android:layout_height="457dp"
-        android:background="#C2E698"
+        android:id="@+id/view6"
+        android:layout_width="416dp"
+        android:layout_height="367dp"
+        android:background="#BCEABE"
+        android:rotation="360"
+        android:rotationX="-180"
+        android:rotationY="-34"
+        android:scaleX="10"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="416dp"
+        android:layout_height="367dp"
+        android:layout_marginTop="400dp"
+        android:background="#BBE1F3"
+        android:rotation="144"
+        android:rotationX="210"
+        android:rotationY="-171"
+        android:scaleX="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/icNoReg"
@@ -88,9 +109,10 @@
 
     <TextView
         android:id="@+id/textView16"
-        android:layout_width="148dp"
+        android:layout_width="409dp"
         android:layout_height="46dp"
         android:layout_marginTop="32dp"
+        android:gravity="center"
         android:text="Welcome"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -101,9 +123,10 @@
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="268dp"
-        android:layout_height="76dp"
+        android:layout_width="329dp"
+        android:layout_height="74dp"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="Please fill-in your basic personal information below"
         android:textSize="20dp"
         android:textStyle="bold"

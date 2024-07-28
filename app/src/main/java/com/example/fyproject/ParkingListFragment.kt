@@ -38,42 +38,42 @@ class ParkingListFragment : Fragment(), VistorListAdapter.ItemClickListener {
 
         fetchDataFromFirestore()
 
-//        parkSearchBtn.setOnClickListener {
-//            val parkSearch = parkSearchTf.text.toString().uppercase()
-//
-//            if (parkSearch != ""){
-//                val collectionName = "visitor" // Replace with your collection name
-//                val userId = FirebaseAuth.getInstance().currentUser!!.uid
-//
-////        admin side --> val query = db.collection(collectionName)
-//                val query = db.collection(collectionName).whereEqualTo("plateNo", parkSearch)
-//                    .whereEqualTo("ownerId", userId)
-//                query.get().addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        val dataList = task.result?.toObjects<visitor>() ?: emptyList()
-//                        setupRecyclerView(dataList)
-//                    } else {
-//                        // Handle any errors in data retrieval
-//                    }
-//                }
-//            }else{
-//                refreshData()
-//                val collectionName = "visitor" // Replace with your collection name
-//                val userId = FirebaseAuth.getInstance().currentUser!!.uid
-//
-////        admin side --> val query = db.collection(collectionName)
-//                val query = db.collection(collectionName).whereEqualTo("ownerId", userId)
-//                query.get().addOnCompleteListener { task ->
-//                    if (task.isSuccessful) {
-//                        val dataList = task.result?.toObjects<visitor>() ?: emptyList()
-//                        setupRecyclerView(dataList)
-//                    } else {
-//                        // Handle any errors in data retrieval
-//                    }
-//                }
-//            }
-//
-//        }
+        parkSearchBtn.setOnClickListener {
+            val parkSearch = parkSearchTf.text.toString().uppercase()
+
+            if (parkSearch != ""){
+                val collectionName = "visitor" // Replace with your collection name
+                val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+//        admin side --> val query = db.collection(collectionName)
+                val query = db.collection(collectionName).whereEqualTo("plateNo", parkSearch)
+                    .whereEqualTo("ownerId", userId).whereEqualTo("parkingStatus", "1")
+                query.get().addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val dataList = task.result?.toObjects<visitor>() ?: emptyList()
+                        setupRecyclerView(dataList)
+                    } else {
+                        // Handle any errors in data retrieval
+                    }
+                }
+            }else{
+                refreshData()
+                val collectionName = "visitor" // Replace with your collection name
+                val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+//        admin side --> val query = db.collection(collectionName)
+                val query = db.collection(collectionName).whereEqualTo("ownerId", userId).whereEqualTo("parkingStatus", "1")
+                query.get().addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val dataList = task.result?.toObjects<visitor>() ?: emptyList()
+                        setupRecyclerView(dataList)
+                    } else {
+                        // Handle any errors in data retrieval
+                    }
+                }
+            }
+
+        }
 
         return view
     }
