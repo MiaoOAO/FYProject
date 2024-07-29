@@ -50,7 +50,7 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.339" />
+        app:layout_constraintVertical_bias="0.49" />
 
     <EditText
         android:id="@+id/nameReg"
@@ -65,13 +65,13 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/icNoReg"
         app:layout_constraintTop_toBottomOf="@+id/icNoReg"
-        app:layout_constraintVertical_bias="0.053" />
+        app:layout_constraintVertical_bias="0.107" />
 
     <EditText
         android:id="@+id/addressReg"
         android:layout_width="266dp"
         android:layout_height="50dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:background="@drawable/border"
         android:ems="10"
         android:hint="  1, Jalan example 1/5, Taman Resident UAndMe"
@@ -94,16 +94,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/addressReg"
         app:layout_constraintTop_toBottomOf="@+id/addressReg"
-        app:layout_constraintVertical_bias="0.093" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <Button
         android:id="@+id/profileFormBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_width="230dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="36dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="@+id/plateNoReg"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="@+id/plateNoReg"
         app:layout_constraintTop_toBottomOf="@+id/plateNoReg" />
 
@@ -113,7 +112,7 @@
         android:layout_height="46dp"
         android:layout_marginTop="32dp"
         android:gravity="center"
-        android:text="Welcome"
+        android:text="WELCOME"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,6 +133,74 @@
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <ImageView
+        android:id="@+id/imageViewProfile"
+        android:layout_width="81dp"
+        android:layout_height="92dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView17"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:srcCompat="@drawable/baseline_person_24" />
+
+    <Button
+        android:id="@+id/uploadProfileImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="select photo"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewProfile"
+        app:layout_constraintStart_toStartOf="@+id/imageViewProfile"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewProfile" />
+
+    <TextView
+        android:id="@+id/textView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:hint="*Not required"
+        android:textColorHint="#E68484"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewProfile"
+        app:layout_constraintStart_toEndOf="@+id/imageViewProfile"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:layout_constraintVertical_bias="0.506" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="*required"
+        android:textColorHint="#E68484"
+        app:layout_constraintBottom_toTopOf="@+id/icNoReg"
+        app:layout_constraintEnd_toEndOf="@+id/icNoReg" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="*required"
+        android:textColorHint="#E68484"
+        app:layout_constraintBottom_toTopOf="@+id/plateNoReg"
+        app:layout_constraintEnd_toEndOf="@+id/plateNoReg" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="*required"
+        android:textColorHint="#E68484"
+        app:layout_constraintBottom_toTopOf="@+id/addressReg"
+        app:layout_constraintEnd_toEndOf="@+id/addressReg" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="*required"
+        android:textColorHint="#E68484"
+        app:layout_constraintBottom_toTopOf="@+id/nameReg"
+        app:layout_constraintEnd_toEndOf="@+id/nameReg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

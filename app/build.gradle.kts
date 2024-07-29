@@ -70,4 +70,6 @@ dependencies {
     implementation ("com.google.firebase:firebase-storage:20.0.0")
     implementation ("org.tensorflow:tensorflow-lite:2.5.0")
     implementation ("org.tensorflow:tensorflow-lite-support:0.1.0")
+    implementation ("com.github.bumptech.glide:glide:4.14.2") // Replace with desired version
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2") // Replace with desired version
 }

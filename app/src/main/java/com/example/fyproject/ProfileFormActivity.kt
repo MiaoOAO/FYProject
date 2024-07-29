@@ -1,24 +1,24 @@
 package com.example.fyproject
 
-import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
+import android.widget.ImageView
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.fyproject.databinding.ActivityProfileFormBinding
-import com.example.fyproject.databinding.ActivityRegistrationBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 
 class ProfileFormActivity : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var binding: ActivityProfileFormBinding
     private lateinit var fStore: FirebaseFirestore
+    lateinit var imageUri: Uri
+    private lateinit var profileImg: ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityProfileFormBinding.inflate(layoutInflater)
@@ -27,20 +27,46 @@ class ProfileFormActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
 
+        profileImg = binding.imageViewProfile
+
+        binding.uploadProfileImgBtn.setOnClickListener{
+            selectImg()
+        }
+
         binding.profileFormBtn.setOnClickListener{
             val icNo = binding.icNoReg.text.toString()
             val fName = binding.nameReg.text.toString()
             val hAddress = binding.addressReg.text.toString()
-            val plateNo = binding.plateNoReg.text.toString()
+            val plateNo = binding.plateNoReg.text.toString().uppercase()
+
+            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+            val progressDialog = ProgressDialog(this@ProfileFormActivity)
+            progressDialog.setMessage("Submitting....")
+            progressDialog.setCancelable(false)
+            progressDialog.show()
+
+
+            val storageReference = FirebaseStorage.getInstance().getReference("images/$userId")
+
+            storageReference.putFile(imageUri).addOnSuccessListener {
+                profileImg.setImageURI(null)
+                Toast.makeText(this@ProfileFormActivity, "Uploaded successful", Toast.LENGTH_SHORT).show()
+                if(progressDialog.isShowing) progressDialog.dismiss()
+
+            }.addOnFailureListener{
+                if(progressDialog.isShowing) progressDialog.dismiss()
+                Toast.makeText(this@ProfileFormActivity, "Failed", Toast.LENGTH_SHORT).show()
+            }
 
             val updateUserMap = hashMapOf(
                 "icNo" to icNo,
                 "name" to fName,
                 "address" to hAddress,
-                "plateNo" to plateNo
+                "plateNo" to plateNo,
+                "profileImg" to userId
             )
 
-            val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
             if(icNo.isNotEmpty() && fName.isNotEmpty() && plateNo.isNotEmpty() && hAddress.isNotEmpty()){
 
@@ -72,4 +98,22 @@ class ProfileFormActivity : AppCompatActivity() {
 
 
         }
+
+    private fun selectImg() {
+        val intent = Intent()
+        intent.type = "image/*"
+        intent.action = Intent.ACTION_GET_CONTENT
+
+        startActivityForResult(intent, 100)
+
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == 100 && resultCode == RESULT_OK){
+            imageUri = data?.data!!
+            profileImg.setImageURI(imageUri)
+        }
+    }
+}
