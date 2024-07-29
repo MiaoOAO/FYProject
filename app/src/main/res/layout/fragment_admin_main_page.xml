@@ -1,14 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".admin.AdminMainPageFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <View
+        android:id="@+id/view6"
+        android:layout_width="416dp"
+        android:layout_height="367dp"
+        android:background="#BCEABE"
+        android:rotation="360"
+        android:rotationX="-180"
+        android:rotationY="-34"
+        android:scaleX="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <View
+        android:id="@+id/view7"
+        android:layout_width="416dp"
+        android:layout_height="367dp"
+        android:layout_marginTop="400dp"
+        android:background="#BBE1F3"
+        android:rotation="144"
+        android:rotationX="210"
+        android:rotationY="-171"
+        android:scaleX="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/visRegBtnAdmin"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:text="Visitor Pre-Registration"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_app_registration_24"
+        app:iconGravity="top"
+        app:iconSize="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.184" />
+
+    <Button
+        android:id="@+id/allUserBtnAdmin"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="44dp"
+        android:text="All User Status"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_person_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/parkingResBtnAdmin"
+        app:layout_constraintHorizontal_bias="0.067"
+        app:layout_constraintStart_toStartOf="@+id/parkingResBtnAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/parkingResBtnAdmin" />
+
+    <Button
+        android:id="@+id/uploadAnnocBtnAdmin"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="28dp"
+        android:text="Upload announcement"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_newspaper_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/allUserBtnAdmin"
+        app:layout_constraintStart_toEndOf="@+id/allUserBtnAdmin"
+        app:layout_constraintTop_toTopOf="@+id/allUserBtnAdmin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/parkingListBtnAdmin"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="28dp"
+        android:text="Parking Reservation List"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_checklist_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/parkingResBtnAdmin"
+        app:layout_constraintStart_toEndOf="@+id/parkingResBtnAdmin"
+        app:layout_constraintTop_toTopOf="@+id/parkingResBtnAdmin"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/parkingResBtnAdmin"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="36dp"
+        android:text="Parking Reservation"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_local_parking_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/visRegBtnAdmin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/visRegBtnAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visRegBtnAdmin" />
+
+    <Button
+        android:id="@+id/visListBtnAdmin"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginStart="28dp"
+        android:text="Visitor List"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_list_alt_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/visRegBtnAdmin"
+        app:layout_constraintStart_toEndOf="@+id/visRegBtnAdmin"
+        app:layout_constraintTop_toTopOf="@+id/visRegBtnAdmin"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>
