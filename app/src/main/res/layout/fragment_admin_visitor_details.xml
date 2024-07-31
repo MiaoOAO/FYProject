@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout9"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminVisitorDetailsFragment">
+
+    <TextView
+        android:id="@+id/visDetailsNameAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VisitorName"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView9Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView9Admin" />
+
+    <TextView
+        android:id="@+id/visDetailsPlateAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VisitorPlate"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView12Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView12Admin" />
+
+    <TextView
+        android:id="@+id/visDetailsVisitDateAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VisitDate"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView13Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView13Admin" />
+
+    <TextView
+        android:id="@+id/textView9Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Visitor's Name"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView11Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView11Admin" />
+
+    <TextView
+        android:id="@+id/textView11Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Visitor Information"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView12Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Visitor's Plate Number"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/visDetailsNameAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsNameAdmin" />
+
+    <ImageView
+        android:id="@+id/imageView8Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_check_box_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView14Admin"
+        app:layout_constraintTop_toTopOf="@+id/textView14Admin" />
+
+    <ImageView
+        android:id="@+id/imageView6Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_phone_android_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView15Admin"
+        app:layout_constraintTop_toTopOf="@+id/textView15Admin" />
+
+    <TextView
+        android:id="@+id/textView13Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Visitor's Visit Date"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView12Admin"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsPlateAdmin" />
+
+    <TextView
+        android:id="@+id/textView14Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Check-in Time"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/visDetailsPhoneAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsPhoneAdmin" />
+
+    <TextView
+        android:id="@+id/visCheckinAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="visCheckin"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView14Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView14Admin" />
+
+    <TextView
+        android:id="@+id/textView15Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="Visitor's Phone"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/visDetailsVisitDateAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsVisitDateAdmin" />
+
+    <TextView
+        android:id="@+id/visDetailsPhoneAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VisitorPhone"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView15Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView15Admin" />
+
+    <Button
+        android:id="@+id/visDetailsDelButtonAdmin"
+        android:layout_width="156dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="48dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/visCheckinAdmin" />
+
+    <ImageView
+        android:id="@+id/imageView4Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView9Admin"
+        app:layout_constraintTop_toTopOf="@+id/textView9Admin" />
+
+    <ImageView
+        android:id="@+id/imageView5Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_directions_car_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView12Admin"
+        app:layout_constraintTop_toTopOf="@+id/textView12Admin" />
+
+    <ImageView
+        android:id="@+id/imageView7Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_date_range_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView13Admin"
+        app:layout_constraintTop_toTopOf="@+id/textView13Admin" />
+
+    <Button
+        android:id="@+id/parkingResCancelBtnAdmin"
+        android:layout_width="155dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="32dp"
+        android:text="Cancel Parking Reserve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsDelButtonAdmin" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,9 @@
-package com.example.fyproject
+package com.example.fyproject.admin
 
 import android.graphics.Color
 import android.os.Bundle
 import android.text.util.Linkify
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,35 +11,37 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
+import com.example.fyproject.ParkingListFragment
+import com.example.fyproject.R
+import com.example.fyproject.VisitorListFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class VisitorDetailsFragment : Fragment() {
+
+class AdminVisitorDetailsFragment : Fragment() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var fStore: FirebaseFirestore
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_visitor_details, container, false)
+        val view = inflater.inflate(R.layout.fragment_admin_visitor_details, container, false)
 
         firebaseAuth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
 
-        val visName = view.findViewById<TextView>(R.id.visDetailsName)
-        val visPlate = view.findViewById<TextView>(R.id.visDetailsPlate)
-        val visCheckin = view.findViewById<TextView>(R.id.visCheckin)
-        val visDate = view.findViewById<TextView>(R.id.visDetailsVisitDate)
-        val visPhone = view.findViewById<TextView>(R.id.visDetailsPhone)
-        val visDelete = view.findViewById<Button>(R.id.visDetailsDelButton)
-        val parkingResDelete = view.findViewById<Button>(R.id.parkingResCancelBtn)
+        val visName = view.findViewById<TextView>(R.id.visDetailsNameAdmin)
+        val visPlate = view.findViewById<TextView>(R.id.visDetailsPlateAdmin)
+        val visCheckin = view.findViewById<TextView>(R.id.visCheckinAdmin)
+        val visDate = view.findViewById<TextView>(R.id.visDetailsVisitDateAdmin)
+        val visPhone = view.findViewById<TextView>(R.id.visDetailsPhoneAdmin)
+        val visDelete = view.findViewById<Button>(R.id.visDetailsDelButtonAdmin)
+        val parkingResDelete = view.findViewById<Button>(R.id.parkingResCancelBtnAdmin)
 
         val selectedVisitor = arguments?.getString("visitor_id")
-
-//        visName.text = selectedVisitor
 
         if (selectedVisitor != null) {
             val docRef = fStore.collection("visitor").whereEqualTo("visitorId", selectedVisitor)
@@ -102,7 +105,7 @@ class VisitorDetailsFragment : Fragment() {
                                 // Document deleted successfully
                                 Toast.makeText(requireContext(), "Document deleted", Toast.LENGTH_SHORT).show()
                                 val transaction = activity?.supportFragmentManager?.beginTransaction()
-                                transaction?.replace(R.id.fragmentContainer, VisitorListFragment())
+                                transaction?.replace(R.id.adminFragmentContainer, AdminVisitorListFragment())
                                 transaction?.addToBackStack(null)
                                 transaction?.commit()
                             }
@@ -141,7 +144,7 @@ class VisitorDetailsFragment : Fragment() {
                                 // Document deleted successfully
                                 Toast.makeText(requireContext(), "Parking Reservation cancelled", Toast.LENGTH_SHORT).show()
                                 val transaction = activity?.supportFragmentManager?.beginTransaction()
-                                transaction?.replace(R.id.fragmentContainer, ParkingListFragment())
+                                transaction?.replace(R.id.adminFragmentContainer, AdminParkingListFragment())
                                 transaction?.addToBackStack(null)
                                 transaction?.commit()
                             }
@@ -162,30 +165,6 @@ class VisitorDetailsFragment : Fragment() {
         }
 
         return view
-    }
-
-    private fun getVisitorData(text: String) {
-
-        val docRef = fStore.collection("visitor").document(text)
-        docRef.get().addOnSuccessListener { document ->
-            if (document != null) {
-                val data = document.data
-
-                if (data != null) {
-                    val plate = data["plateNo"] as String
-
-
-                    // Update UI elements with retrieved data
-//                    visPlate.text = plate
-
-
-                    Toast.makeText(requireContext(), "Plate: $plate", Toast.LENGTH_SHORT).show()
-                }
-            }
-        }.addOnFailureListener { exception ->
-
-            Toast.makeText(requireContext(), "Error, data retrieve from fireStore failed", Toast.LENGTH_SHORT).show()
-        }
     }
 
 

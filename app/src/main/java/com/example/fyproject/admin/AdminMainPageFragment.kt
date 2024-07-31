@@ -30,6 +30,12 @@ class AdminMainPageFragment : Fragment() {
             updateToolbarTitle("Upload Announcement")
         }
 
+        visitorListAdmin.setOnClickListener{
+            changeFragment(AdminVisitorListFragment())
+            updateToolbarTitle("Visitor List")
+        }
+
+
         return view
     }
 
