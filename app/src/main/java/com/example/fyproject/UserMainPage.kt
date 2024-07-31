@@ -1,21 +1,16 @@
 package com.example.fyproject
 
-import android.app.Activity
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import com.example.fyproject.databinding.ActivityMainBinding
+import announcementFragment
 import com.example.fyproject.databinding.ActivityUserMainPageBinding
 import com.example.fyproject.listener.UserMainPageListener
 import com.google.android.material.navigation.NavigationView
-import com.google.firebase.auth.FirebaseAuth
 
 
 class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, UserMainPageListener{
@@ -78,6 +73,11 @@ class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 //                changeFragment(ScanPlateFragment())
                 val intent = Intent(this, ScanPlateActivity::class.java)
                 startActivity(intent)
+            }
+
+            R.id.pdf_nav_menu-> {
+                setToolbarTitle("Announucement")
+                changeFragment(announcementFragment())
             }
 
             R.id.logout_nav_menu-> {

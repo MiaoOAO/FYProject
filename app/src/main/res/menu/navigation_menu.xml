@@ -15,6 +15,10 @@
         android:title="Scan" />
 
     <item
+        android:id="@+id/pdf_nav_menu"
+        android:title="Announcement" />
+
+    <item
         android:id="@+id/logout_nav_menu"
         android:icon="@drawable/baseline_logout_24"
         android:title="Logout" />

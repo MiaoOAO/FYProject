@@ -5,32 +5,26 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Im
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.example.fyproject.R
-import com.example.fyproject.databinding.FragmentAdminUploadAnnouncementBinding
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import java.net.URI
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-
 class AdminUploadAnnouncementFragment : Fragment() {
 
 
-    private lateinit var firebaseStoreRef : FirebaseFirestore
-    lateinit var imageUri: Uri
-    private lateinit var firebaseImage:ImageView
+    private lateinit var firebaseStoreRef: FirebaseFirestore
+    lateinit var fileUri: Uri // Change to Uri for any file type
+    private lateinit var selectBtn: Button
+    private lateinit var saveBtn: Button
 
 
     override fun onCreateView(
@@ -42,27 +36,21 @@ class AdminUploadAnnouncementFragment : Fragment() {
 
         firebaseStoreRef = FirebaseFirestore.getInstance()
 
-        val selectBtn: Button = view.findViewById(R.id.uploadImgBtn)
-        val saveBtn:Button = view.findViewById(R.id.annSaveBtn)
-        firebaseImage = view.findViewById(R.id.firebaseImage)
+        selectBtn = view.findViewById(R.id.uploadImgBtn) // Update button ID if needed
+        saveBtn = view.findViewById(R.id.annSaveBtn)
 
-        selectBtn.setOnClickListener{
-            selectImg()
+        selectBtn.setOnClickListener {
+            selectPdf()
         }
 
-        saveBtn.setOnClickListener{
-            saveImageToFirebase()
+        saveBtn.setOnClickListener {
+            savePdfToFirebase()
         }
 
         return view
-
-
-
-
-
     }
 
-    private fun saveImageToFirebase() {
+    private fun savePdfToFirebase() {
         val progressDialog = ProgressDialog(requireContext())
         progressDialog.setMessage("Uploading....")
         progressDialog.setCancelable(false)
@@ -70,23 +58,22 @@ class AdminUploadAnnouncementFragment : Fragment() {
 
         val formatter = SimpleDateFormat("yyyy_MM_DD_HH_mm_ss", Locale.getDefault())
         val now = Date()
-        val fileName = formatter.format(now)
-        val storageReference = FirebaseStorage.getInstance().getReference("images/$fileName")
+        val fileName = formatter.format(now) + ".pdf" // Add extension for PDF
+        val storageReference = FirebaseStorage.getInstance().getReference("pdfs/$fileName")
 
-        storageReference.putFile(imageUri).addOnSuccessListener {
-            firebaseImage.setImageURI(null)
+        storageReference.putFile(fileUri).addOnSuccessListener {
             Toast.makeText(requireContext(), "Uploaded successful", Toast.LENGTH_SHORT).show()
-            if(progressDialog.isShowing) progressDialog.dismiss()
+            if (progressDialog.isShowing) progressDialog.dismiss()
 
-        }.addOnFailureListener{
-            if(progressDialog.isShowing) progressDialog.dismiss()
+        }.addOnFailureListener {
+            if (progressDialog.isShowing) progressDialog.dismiss()
             Toast.makeText(requireContext(), "Failed", Toast.LENGTH_SHORT).show()
         }
     }
 
-    private fun selectImg() {
+    private fun selectPdf() {
         val intent = Intent()
-        intent.type = "image/*"
+        intent.type = "application/pdf" // Specify PDF MIME type
         intent.action = Intent.ACTION_GET_CONTENT
 
         startActivityForResult(intent, 100)
@@ -96,10 +83,8 @@ class AdminUploadAnnouncementFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == 100 && resultCode == RESULT_OK){
-            imageUri = data?.data!!
-            firebaseImage.setImageURI(imageUri)
+        if (requestCode == 100 && resultCode == RESULT_OK) {
+            fileUri = data?.data!!
         }
     }
-
 }
