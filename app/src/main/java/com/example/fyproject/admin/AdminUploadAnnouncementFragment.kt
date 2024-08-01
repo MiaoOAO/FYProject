@@ -9,11 +9,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.fyproject.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -25,6 +28,7 @@ class AdminUploadAnnouncementFragment : Fragment() {
     lateinit var fileUri: Uri // Change to Uri for any file type
     private lateinit var selectBtn: Button
     private lateinit var saveBtn: Button
+    private lateinit var pdfName: TextView
 
 
     override fun onCreateView(
@@ -36,8 +40,9 @@ class AdminUploadAnnouncementFragment : Fragment() {
 
         firebaseStoreRef = FirebaseFirestore.getInstance()
 
-        selectBtn = view.findViewById(R.id.uploadImgBtn) // Update button ID if needed
+        selectBtn = view.findViewById(R.id.uploadImgBtn)
         saveBtn = view.findViewById(R.id.annSaveBtn)
+        pdfName = view.findViewById(R.id.pdfNameTv)
 
         selectBtn.setOnClickListener {
             selectPdf()
@@ -85,6 +90,11 @@ class AdminUploadAnnouncementFragment : Fragment() {
 
         if (requestCode == 100 && resultCode == RESULT_OK) {
             fileUri = data?.data!!
+            val fileName = fileUri.lastPathSegment ?: "Unknown File"
+
+            val normalizedFileName = URLEncoder.encode(fileName, StandardCharsets.UTF_8)
+
+            pdfName.text = normalizedFileName
         }
     }
 }

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout11"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminVisitorRegistrationFragment">
+
+    <View
+        android:id="@+id/view2Admin"
+        android:layout_width="364dp"
+        android:layout_height="390dp"
+        android:layout_marginTop="24dp"
+        android:background="#C2E698"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6Admin" />
+
+    <EditText
+        android:id="@+id/visRegNameAdmin"
+        android:layout_width="275dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="Visitor's name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/visDateTvAdmin"
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintStart_toStartOf="@+id/visDateBtnAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visDateBtnAdmin" />
+
+    <EditText
+        android:id="@+id/visPlateNoAdmin"
+        android:layout_width="275dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="Visitor's car plate (WWW1234)"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/visRegNameAdmin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/visRegNameAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visRegNameAdmin" />
+
+    <EditText
+        android:id="@+id/visPhoneAdmin"
+        android:layout_width="275dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:hint="Visitor's phone number"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="@+id/visPlateNoAdmin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/visPlateNoAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visPlateNoAdmin" />
+
+    <TextView
+        android:id="@+id/visDateTvAdmin"
+        android:layout_width="123dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="16dp"
+        android:hint="Date..."
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/visDateBtnAdmin"
+        app:layout_constraintStart_toEndOf="@+id/visDateBtnAdmin"
+        app:layout_constraintTop_toTopOf="@+id/visDateBtnAdmin"
+        app:layout_constraintVertical_bias="0.555" />
+
+    <Button
+        android:id="@+id/visSubmitBtnAdmin"
+        android:layout_width="261dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="56dp"
+        android:text="Submit"
+        app:layout_constraintEnd_toEndOf="@+id/visPhoneAdmin"
+        app:layout_constraintHorizontal_bias="0.548"
+        app:layout_constraintStart_toStartOf="@+id/visPhoneAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visPhoneAdmin" />
+
+    <Button
+        android:id="@+id/visDateBtnAdmin"
+        android:layout_width="152dp"
+        android:layout_height="77dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:text="Pick the date"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_date_range_24"
+        app:iconSize="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6Admin"
+        app:strokeColor="#AC5555" />
+
+    <TextView
+        android:id="@+id/textView6Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="Visitor Registration"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

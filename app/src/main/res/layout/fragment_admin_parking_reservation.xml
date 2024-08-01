@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout12"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminParkingReservationFragment" >
+
+    <View
+        android:id="@+id/view5Admin"
+        android:layout_width="367dp"
+        android:layout_height="257dp"
+        android:layout_marginTop="20dp"
+        android:background="#C2E698"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/plate_number_spinnerAdmin" />
+
+    <ImageView
+        android:id="@+id/imageView4Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintEnd_toStartOf="@+id/parkingResNameAdmin"
+        app:layout_constraintTop_toTopOf="@+id/textView20Admin" />
+
+    <Spinner
+        android:id="@+id/plate_number_spinnerAdmin"
+        android:layout_width="340dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView19Admin"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/textView19Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView19Admin" />
+
+    <TextView
+        android:id="@+id/textView19Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Parking Reservation"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView18Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select the car plate number :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/plate_number_spinnerAdmin"
+        app:layout_constraintStart_toStartOf="@+id/plate_number_spinnerAdmin" />
+
+    <Button
+        android:id="@+id/parkingReserveBtnAdmin"
+        android:layout_width="193dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="100dp"
+        android:text="Confirm"
+        app:layout_constraintEnd_toEndOf="@+id/plate_number_spinnerAdmin"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/plate_number_spinnerAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/view5Admin" />
+
+    <TextView
+        android:id="@+id/textView20Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="20dp"
+        android:text="Visitor's Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/view5Admin"
+        app:layout_constraintTop_toTopOf="@+id/view5Admin" />
+
+    <TextView
+        android:id="@+id/parkingResNameAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="..."
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView20Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView20Admin" />
+
+    <ImageView
+        android:id="@+id/imageView2Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_date_range_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView22Admin"
+        app:layout_constraintTop_toTopOf="@+id/textView22Admin" />
+
+    <TextView
+        android:id="@+id/textView22Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Visit Date"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView20Admin"
+        app:layout_constraintTop_toBottomOf="@+id/parkingResNameAdmin" />
+
+    <TextView
+        android:id="@+id/parkingResVisitDateAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="..."
+        app:layout_constraintStart_toStartOf="@+id/textView22Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView22Admin" />
+
+    <ImageView
+        android:id="@+id/imageView3Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_phone_android_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView24Admin"
+        app:layout_constraintTop_toTopOf="@+id/textView24Admin" />
+
+    <TextView
+        android:id="@+id/textView24Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Phone"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView22Admin"
+        app:layout_constraintTop_toBottomOf="@+id/parkingResVisitDateAdmin" />
+
+    <TextView
+        android:id="@+id/parkingResPhoneAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="..."
+        app:layout_constraintStart_toStartOf="@+id/textView24Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView24Admin" />
+
+    <TextView
+        android:id="@+id/TextView25Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:text="Parking lot available :"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/view5Admin"
+        app:layout_constraintTop_toBottomOf="@+id/view5Admin" />
+
+    <TextView
+        android:id="@+id/parkingResLotAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="..."
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/TextView25Admin"
+        app:layout_constraintStart_toEndOf="@+id/TextView25Admin"
+        app:layout_constraintTop_toTopOf="@+id/TextView25Admin"
+        app:layout_constraintVertical_bias="1.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

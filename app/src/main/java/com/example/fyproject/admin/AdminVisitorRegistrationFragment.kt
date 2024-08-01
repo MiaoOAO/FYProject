@@ -1,4 +1,4 @@
-package com.example.fyproject
+package com.example.fyproject.admin
 
 import android.app.DatePickerDialog
 import android.os.Bundle
@@ -10,11 +10,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.fyproject.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Calendar
 
-class VisitorRegistrationFragment : Fragment() {
+class AdminVisitorRegistrationFragment : Fragment() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var fStore: FirebaseFirestore
@@ -24,16 +25,16 @@ class VisitorRegistrationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        val view = inflater.inflate(R.layout.fragment_visitor_registration, container, false)
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_admin_visitor_registration, container, false)
 
         firebaseAuth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
 
-        val vBtn:Button = view.findViewById(R.id.visSubmitBtn)
+        val vBtn: Button = view.findViewById(R.id.visSubmitBtnAdmin)
 
         //Date Picker by using dialog method
-        val dateLabel = view.findViewById<TextView>(R.id.visDateTv)
+        val dateLabel = view.findViewById<TextView>(R.id.visDateTvAdmin)
         var selectedDate: String? = null
         val calendar = Calendar.getInstance()
         val initialYear = calendar.get(Calendar.YEAR)
@@ -55,7 +56,7 @@ class VisitorRegistrationFragment : Fragment() {
         datePickerDialog.datePicker.minDate = today.timeInMillis
 
         // (Optional) Set onClick listener on a button to show the dialog
-        val selectDateButton = view.findViewById<Button>(R.id.visDateBtn)
+        val selectDateButton = view.findViewById<Button>(R.id.visDateBtnAdmin)
         selectDateButton.setOnClickListener {
             datePickerDialog.show()
         }
@@ -63,9 +64,9 @@ class VisitorRegistrationFragment : Fragment() {
 
 //      add visitor registration to firestore
         vBtn.setOnClickListener{
-            val vName = view.findViewById<TextView?>(R.id.visName).text.toString()
-            val vPlate = view.findViewById<TextView?>(R.id.visPlateNo).text.toString().uppercase()
-            val vPhone = view.findViewById<TextView?>(R.id.visPhone).text.toString()
+            val vName = view.findViewById<TextView?>(R.id.visRegNameAdmin).text.toString()
+            val vPlate = view.findViewById<TextView?>(R.id.visPlateNoAdmin).text.toString().uppercase()
+            val vPhone = view.findViewById<TextView?>(R.id.visPhoneAdmin).text.toString()
 
             if(vName != "" && vPlate != "" && vPhone != "") {
 
@@ -103,7 +104,7 @@ class VisitorRegistrationFragment : Fragment() {
                                         ).show()
 
                                         val transaction = activity?.supportFragmentManager?.beginTransaction()
-                                        transaction?.replace(R.id.fragmentContainer, UserMainPageFragment())
+                                        transaction?.replace(R.id.adminFragmentContainer, AdminMainPageFragment())
                                         transaction?.addToBackStack(null)
                                         transaction?.commit()
                                     }
@@ -134,8 +135,5 @@ class VisitorRegistrationFragment : Fragment() {
     }
 
 
+
 }
-
-
-
-

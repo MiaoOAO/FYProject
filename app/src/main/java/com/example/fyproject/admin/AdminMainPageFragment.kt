@@ -25,6 +25,17 @@ class AdminMainPageFragment : Fragment() {
         val parkingListAdmin:Button = view.findViewById(R.id.parkingListBtnAdmin)
         val uploadBtn : Button = view.findViewById(R.id.uploadAnnocBtnAdmin)
 
+
+        visitorRegAdmin.setOnClickListener{
+            changeFragment(AdminVisitorRegistrationFragment())
+            updateToolbarTitle("Visitor Registration")
+        }
+
+        parkingResAdmin.setOnClickListener{
+            changeFragment(AdminParkingReservationFragment())
+            updateToolbarTitle("Parking Reservation")
+        }
+
         uploadBtn.setOnClickListener{
             changeFragment(AdminUploadAnnouncementFragment())
             updateToolbarTitle("Upload Announcement")

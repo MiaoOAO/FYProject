@@ -54,8 +54,8 @@
 
     <EditText
         android:id="@+id/adminEmailLogin"
-        android:layout_width="284dp"
-        android:layout_height="45dp"
+        android:layout_width="283dp"
+        android:layout_height="57dp"
         android:layout_marginTop="84dp"
         android:background="@drawable/border"
         android:ems="10"
@@ -69,8 +69,8 @@
 
     <EditText
         android:id="@+id/adminPassLogin"
-        android:layout_width="282dp"
-        android:layout_height="46dp"
+        android:layout_width="283dp"
+        android:layout_height="57dp"
         android:layout_marginTop="36dp"
         android:background="@drawable/border"
         android:ems="10"
@@ -84,8 +84,8 @@
 
     <Button
         android:id="@+id/adminLoginBtn"
-        android:layout_width="270dp"
-        android:layout_height="49dp"
+        android:layout_width="273dp"
+        android:layout_height="57dp"
         android:layout_marginTop="56dp"
         android:text="LOGIN"
         app:layout_constraintEnd_toEndOf="@+id/adminPassLogin"

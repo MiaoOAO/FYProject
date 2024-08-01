@@ -5,36 +5,36 @@
     android:id="@+id/frameLayout7"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.AdminUploadAnnouncementFragment" >
+    tools:context=".admin.AdminUploadAnnouncementFragment">
 
     <Button
         android:id="@+id/uploadImgBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="40dp"
-        android:text="upload Image"
+        android:layout_width="155dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="116dp"
+        android:text="Select file"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firebaseImage" />
+        app:layout_constraintTop_toBottomOf="@+id/pdfNameTv" />
 
     <Button
         android:id="@+id/annSaveBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="48dp"
-        android:text="Save"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/firebaseImage" />
+        android:layout_width="155dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="76dp"
+        android:text="Upload to live"
+        app:layout_constraintEnd_toEndOf="@+id/uploadImgBtn"
+        app:layout_constraintStart_toStartOf="@+id/uploadImgBtn"
+        app:layout_constraintTop_toBottomOf="@+id/uploadImgBtn" />
 
-    <ImageView
-        android:id="@+id/firebaseImage"
-        android:layout_width="325dp"
-        android:layout_height="230dp"
-        android:layout_marginTop="68dp"
+    <TextView
+        android:id="@+id/pdfNameTv"
+        android:layout_width="155dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="148dp"
+        android:text="PDF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
