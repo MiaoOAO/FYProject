@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout15"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminGetUserDetailsFragment" >
+
+    <View
+        android:id="@+id/viewUserAdmin"
+        android:layout_width="378dp"
+        android:layout_height="439dp"
+        android:layout_marginTop="32dp"
+        android:background="#C2E698"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11UserAdmin" />
+
+    <ImageView
+        android:id="@+id/imageView8UserAdmin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_check_box_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView14UserAdmin"
+        app:layout_constraintTop_toTopOf="@+id/textView14UserAdmin" />
+
+    <ImageView
+        android:id="@+id/imageView6UserAdmin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_phone_android_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView15UserAdmin"
+        app:layout_constraintTop_toTopOf="@+id/textView15UserAdmin" />
+
+    <TextView
+        android:id="@+id/userDetailsNameUserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="UserName"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView9UserAdmin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView9UserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/textView9UserAdmin" />
+
+    <TextView
+        android:id="@+id/userDetailsPlateUserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="UserPlate"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView12UserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/textView12UserAdmin" />
+
+    <TextView
+        android:id="@+id/userDetailsIcNoUserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="IcNo"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView13UserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/textView13UserAdmin" />
+
+    <TextView
+        android:id="@+id/textView9UserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:text="User's Name"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11UserAdmin"
+        app:layout_constraintVertical_bias="0.089" />
+
+    <TextView
+        android:id="@+id/textView11UserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Information"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
+
+    <TextView
+        android:id="@+id/textView12UserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="User's Plate Number"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/userDetailsNameUserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/userDetailsNameUserAdmin" />
+
+    <TextView
+        android:id="@+id/textView13UserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="User's Identity Number"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView12UserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/userDetailsPlateUserAdmin" />
+
+    <TextView
+        android:id="@+id/textView14UserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="User's Address"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/userDetailsPhoneUserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/userDetailsPhoneUserAdmin" />
+
+    <TextView
+        android:id="@+id/userAddressUserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="userAddress"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView14UserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/textView14UserAdmin" />
+
+    <TextView
+        android:id="@+id/textView15UserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="User's Phone"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView13UserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/userDetailsIcNoUserAdmin" />
+
+    <TextView
+        android:id="@+id/userDetailsPhoneUserAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="UserPhone"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView15UserAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/textView15UserAdmin" />
+
+    <Button
+        android:id="@+id/userDetailsDelButtonUserAdmin"
+        android:layout_width="156dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewUserAdmin" />
+
+    <ImageView
+        android:id="@+id/imageView4UserAdmin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_person_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView9UserAdmin"
+        app:layout_constraintTop_toTopOf="@+id/textView9UserAdmin" />
+
+    <ImageView
+        android:id="@+id/imageView5UserAdmin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_directions_car_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView12UserAdmin"
+        app:layout_constraintTop_toTopOf="@+id/textView12UserAdmin" />
+
+    <ImageView
+        android:id="@+id/imageView7UserAdmin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_date_range_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView13UserAdmin"
+        app:layout_constraintTop_toTopOf="@+id/textView13UserAdmin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

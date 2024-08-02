@@ -5,16 +5,16 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
     android:background="@drawable/border"
-    android:isScrollContainer="false"
     android:fitsSystemWindows="true"
-    android:layout_margin="4dp">
+    android:isScrollContainer="false">
 
     <TextView
         android:id="@+id/item_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="36dp"
         android:layout_marginTop="16dp"
         android:hint="Name"
         android:textSize="18sp"
@@ -36,7 +36,7 @@
         android:id="@+id/item_date"
         android:layout_width="275dp"
         android:layout_height="32dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/item_plateNo"
@@ -54,5 +54,29 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.45" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/item_plateNo"
+        app:layout_constraintTop_toTopOf="@+id/item_plateNo"
+        app:srcCompat="@drawable/baseline_directions_car_24" />
+
+    <ImageView
+        android:id="@+id/imageView11"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/item_date"
+        app:layout_constraintTop_toTopOf="@+id/item_date"
+        app:srcCompat="@drawable/baseline_date_range_24" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:layout_constraintEnd_toStartOf="@+id/item_name"
+        app:layout_constraintTop_toTopOf="@+id/item_name"
+        app:srcCompat="@drawable/baseline_person_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

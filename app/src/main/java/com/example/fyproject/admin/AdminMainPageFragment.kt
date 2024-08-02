@@ -23,6 +23,7 @@ class AdminMainPageFragment : Fragment() {
         val visitorListAdmin: Button= view.findViewById(R.id.visListBtnAdmin)
         val parkingResAdmin:Button = view.findViewById(R.id.parkingResBtnAdmin)
         val parkingListAdmin:Button = view.findViewById(R.id.parkingListBtnAdmin)
+        val allUserListAdmin:Button = view.findViewById(R.id.allUserBtnAdmin)
         val uploadBtn : Button = view.findViewById(R.id.uploadAnnocBtnAdmin)
 
 
@@ -49,6 +50,11 @@ class AdminMainPageFragment : Fragment() {
         parkingListAdmin.setOnClickListener{
             changeFragment(AdminParkingListFragment())
             updateToolbarTitle("Parking Reservation List")
+        }
+
+        allUserListAdmin.setOnClickListener{
+            changeFragment(AdminGetUserListFragment())
+            updateToolbarTitle("User List")
         }
 
 

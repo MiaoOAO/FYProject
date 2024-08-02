@@ -64,7 +64,8 @@ class ProfileFormActivity : AppCompatActivity() {
                 "name" to fName,
                 "address" to hAddress,
                 "plateNo" to plateNo,
-                "profileImg" to userId
+                "profileImg" to userId,
+                "userId" to userId
             )
 
 
