@@ -20,7 +20,7 @@
     <EditText
         android:id="@+id/parkingSearch"
         android:layout_width="272dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginTop="44dp"
         android:ems="10"
         android:hint="plate number search..."
@@ -33,7 +33,7 @@
     <Button
         android:id="@+id/parkingSearchBtn"
         android:layout_width="65dp"
-        android:layout_height="46dp"
+        android:layout_height="50dp"
         app:icon="@drawable/baseline_search_24"
         app:iconSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/parkingSearch"

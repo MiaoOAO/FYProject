@@ -176,8 +176,10 @@
         android:layout_height="54dp"
         android:layout_marginTop="32dp"
         android:text="Cancel Parking Reserve"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/visDetailsDelButtonAdmin"
         app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/visDetailsDelButtonAdmin" />
+        app:layout_constraintStart_toStartOf="@+id/visDetailsDelButtonAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsDelButtonAdmin"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -46,6 +46,11 @@ class AdminMainPageFragment : Fragment() {
             updateToolbarTitle("Visitor List")
         }
 
+        parkingListAdmin.setOnClickListener{
+            changeFragment(AdminParkingListFragment())
+            updateToolbarTitle("Parking Reservation List")
+        }
+
 
         return view
     }
