@@ -64,12 +64,12 @@ class AdminMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelect
 //                changeFragment(ProfileFragment())
             }
 
-            R.id.scan_nav_menu-> {
+//            R.id.scan_nav_menu-> {
 //                setToolbarTitle("Scanner")
 //                changeFragment(ScanPlateFragment())
 //                val intent = Intent(this, ScanPlateActivity::class.java)
 //                startActivity(intent)
-            }
+//            }
 
             R.id.logout_nav_menu-> {
                 var intent = Intent(this, AdminLoginActivity::class.java)

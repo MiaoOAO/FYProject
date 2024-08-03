@@ -41,7 +41,7 @@
         android:layout_width="175dp"
         android:layout_height="135dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="52dp"
         android:text="Visitor Pre-Registration"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_app_registration_24"
@@ -77,6 +77,19 @@
         app:layout_constraintStart_toEndOf="@+id/allUserBtnAdmin"
         app:layout_constraintTop_toTopOf="@+id/allUserBtnAdmin"
         app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/checkInBtnAdmin"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="32dp"
+        android:text="Manual Visitor CheckIn"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_vertical_align_top_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintStart_toStartOf="@+id/allUserBtnAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/allUserBtnAdmin" />
 
     <Button
         android:id="@+id/parkingListBtnAdmin"

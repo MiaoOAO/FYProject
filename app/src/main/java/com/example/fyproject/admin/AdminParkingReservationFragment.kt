@@ -42,6 +42,14 @@ class AdminParkingReservationFragment : Fragment() {
 
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
+//        val formatter = SimpleDateFormat("d/M/yyyy")
+//        val today = formatter.format(Date()) // Get today's date string
+//
+//// Convert today's date string to Timestamp
+//        val timestampToday = Timestamp(formatter.parse(today)!!) // Parse and convert
+
+//        Toast.makeText(requireContext(), "$timestampToday", Toast.LENGTH_SHORT).show()
+
         val query = db.collection("visitor").whereEqualTo("parkingStatus", "")
 
         query.get().addOnCompleteListener { task ->

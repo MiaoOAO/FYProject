@@ -3,7 +3,6 @@ package com.example.fyproject.admin
 import android.graphics.Color
 import android.os.Bundle
 import android.text.util.Linkify
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,8 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.example.fyproject.ParkingListFragment
+import androidx.fragment.app.Fragment
 import com.example.fyproject.R
-import com.example.fyproject.VisitorListFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -40,6 +38,7 @@ class AdminVisitorDetailsFragment : Fragment() {
         val visPhone = view.findViewById<TextView>(R.id.visDetailsPhoneAdmin)
         val visDelete = view.findViewById<Button>(R.id.visDetailsDelButtonAdmin)
         val parkingResDelete = view.findViewById<Button>(R.id.parkingResCancelBtnAdmin)
+
 
         val selectedVisitor = arguments?.getString("visitor_id")
 

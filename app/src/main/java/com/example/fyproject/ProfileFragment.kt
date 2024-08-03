@@ -46,6 +46,7 @@ class ProfileFragment : Fragment() {
         val pEmail:TextView = view.findViewById(R.id.emailTv)
         val pPhone:TextView = view.findViewById(R.id.phoneNoTv)
         val pAddress:TextView = view.findViewById(R.id.addressTv)
+        val pPlateNo:TextView = view.findViewById(R.id.plateNoTv)
         val pIc:TextView = view.findViewById(R.id.icNoTv)
         val pImage:ImageView = view.findViewById(R.id.profilePic)
 
@@ -64,6 +65,7 @@ class ProfileFragment : Fragment() {
                     val address = data["address"] as String?
                     val ic = data["icNo"] as String?
                     val imageUrl = data["profileImg"] as String?
+                    val plateNo = data["plateNo"] as String?
 
                     val storageRef = storage.reference.child("images/$imageUrl")
                     val localFile = File.createTempFile("image", "jpg")
@@ -83,6 +85,7 @@ class ProfileFragment : Fragment() {
                     pPhone.text = phone
                     pAddress.text = address
                     pIc.text = ic
+                    pPlateNo.text = plateNo
 
                     Toast.makeText(requireContext(), "Email: $pEmail , Name: $pName", Toast.LENGTH_SHORT).show()
                 }

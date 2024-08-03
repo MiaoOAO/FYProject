@@ -68,12 +68,12 @@ class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 changeFragment(ProfileFragment())
             }
 
-            R.id.scan_nav_menu-> {
-//                setToolbarTitle("Scanner")
-//                changeFragment(ScanPlateFragment())
-                val intent = Intent(this, ScanPlateActivity::class.java)
-                startActivity(intent)
-            }
+//            R.id.scan_nav_menu-> {
+////                setToolbarTitle("Scanner")
+////                changeFragment(ScanPlateFragment())
+//                val intent = Intent(this, ScanPlateActivity::class.java)
+//                startActivity(intent)
+//            }
 
             R.id.pdf_nav_menu-> {
                 setToolbarTitle("Announucement")

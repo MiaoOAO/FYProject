@@ -10,9 +10,9 @@
         android:title="Profile"
         android:id="@+id/profile_nav_menu"/>
 
-    <item
-        android:id="@+id/scan_nav_menu"
-        android:title="Scan" />
+<!--    <item-->
+<!--        android:id="@+id/scan_nav_menu"-->
+<!--        android:title="Scan" />-->
 
     <item
         android:id="@+id/pdf_nav_menu"
