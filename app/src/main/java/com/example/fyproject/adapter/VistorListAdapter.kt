@@ -10,9 +10,12 @@ import com.example.fyproject.R
 import com.example.fyproject.data.visitor
 import com.example.fyproject.listener.ItemClickListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.collection.LLRBNode
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObjects
 import org.w3c.dom.Text
+import java.text.SimpleDateFormat
+import java.util.*
 
 class VistorListAdapter(private val visitorList: List<visitor>, private val listener: ItemClickListener) : RecyclerView.Adapter<VistorListAdapter.VisitorViewHolder>() {
 
@@ -50,7 +53,35 @@ class VistorListAdapter(private val visitorList: List<visitor>, private val list
         val item = visitorList[position]
         holder.name.text = item.name
         holder.plateNo.text = item.plateNo
-        holder.date.text = item.VisitDate
+//        holder.date.text = item.VisitDate
+
+        val visitDateString = item.VisitDate  // Assuming VisitDate is a String
+
+// Get today's date in yyyy-MM-dd format
+        val formatter = SimpleDateFormat("d/M/yyyy")
+        val today = formatter.format(Date())  // Use Date() for current date
+
+// Parse visitDate and today's date into Date objects
+        val visitDate: Date? = try {
+            formatter.parse(visitDateString)
+        } catch (e: Exception) {
+            null  // Handle parsing errors (e.g., invalid format)
+        }
+
+        val isValidVisit = if (visitDate != null) {
+            visitDate.after(formatter.parse(today)) || visitDate.equals(formatter.parse(today))   // Check if visitDate is after today
+        } else {
+            false  // Consider invalid visitDate as expired
+        }
+
+        if (isValidVisit) {
+            holder.date.text = visitDateString  // Set text if visit is valid
+        } else {
+            // Handle expired visitDate (e.g., set a different text or color)
+            holder.date.text = "Expired"  // Example for expired visit
+        }
+
+
 
 //        //val cornerRadius = resources.getDimensionPixelSize(R.dimen.corner_radius) // Replace with your desired corner radius
 //        val backgroundDrawable = ContextCompat.getDrawable(holder.itemView.context, R.drawable.border) // Replace with your item background drawable

@@ -2,6 +2,7 @@ package com.example.fyproject
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fyproject.databinding.ActivityRegistrationBinding
@@ -41,39 +42,57 @@ class Registration : AppCompatActivity() {
                 "profileImg" to "",
             )
 
-//            val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
+            // Password validation with improved clarity
+        if (isValidPassword(pass))
+        {
 
-            if(email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()){
-                if(pass == confirmPass){
+            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
+
+                if (pass == confirmPass) {
+
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
+
                         if (it.isSuccessful) {
                             val intent = Intent(this, MainActivity::class.java)
 
-                                //connent and store the user data to firebase firestore
-                                val userId = FirebaseAuth.getInstance().currentUser!!.uid
+                            //connent and store the user data to firebase firestore
+                            val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
-                                fStore.collection("user").document(userId).set(userMap).addOnSuccessListener {
-                                    Toast.makeText(this, "Account register successful", Toast.LENGTH_SHORT).show()
+                            fStore.collection("user").document(userId).set(userMap)
+                                .addOnSuccessListener {
+                                    Toast.makeText(
+                                        this,
+                                        "Account register successful",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
                                 }
-                                    .addOnFailureListener{
-                                    Toast.makeText(this, "Failed to added", Toast.LENGTH_SHORT).show()
-                                    }
+                                .addOnFailureListener {
+                                    Toast.makeText(this, "Failed to added", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
 
                             startActivity(intent)
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
-                }else{
-                    Toast.makeText(this, "Password is not matched", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "Password do not matched", Toast.LENGTH_SHORT).show()
                 }
-            }else{
-                    Toast.makeText(this, "Empty Fields is not allowed", Toast.LENGTH_SHORT).show()
-                }
+            } else {
+                Toast.makeText(this, "Empty Fields is not allowed", Toast.LENGTH_SHORT).show()
+            }
+        }else{
+            Toast.makeText(this, "Password must be at least 6 characters and contain an alphabet", Toast.LENGTH_SHORT).show()
+        }
             }
 
         }
+
+    private fun isValidPassword(password: String): Boolean {
+        return password.length >= 6 && password.matches(".*[A-Za-z].*".toRegex()) // At least 1 alphabet
+    }
 
 
     }
