@@ -67,6 +67,12 @@ class VisitorDetailsFragment : Fragment() {
                             parkingResDelete.visibility = View.INVISIBLE
                         }
 
+                        if (visitDate == "Expired") {
+                            visDelete.visibility = View.INVISIBLE
+                        } else {
+                            visDelete.visibility = View.VISIBLE
+                        }
+
 
                         if(visCheckin.text == ""){
                             visCheckin.text = "Visitor haven't check-in yet"

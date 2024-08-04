@@ -1,7 +1,6 @@
 package com.example.fyproject.admin
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,10 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fyproject.R
-import com.example.fyproject.VisitorDetailsFragment
 import com.example.fyproject.adapter.VistorListAdapter
 import com.example.fyproject.data.visitor
 import com.google.firebase.auth.FirebaseAuth
@@ -56,7 +55,7 @@ class AdminVisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener
 
         // handle spinner selection
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                 val selectedOption = history[position]
 
                 if(selectedOption == "Valid"){

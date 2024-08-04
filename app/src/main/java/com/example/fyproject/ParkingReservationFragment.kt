@@ -15,8 +15,6 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import java.text.SimpleDateFormat
-import java.util.*
 
 
 class ParkingReservationFragment : Fragment() {
@@ -48,7 +46,8 @@ class ParkingReservationFragment : Fragment() {
             if (task.isSuccessful) {
                 val plateNumbers = mutableListOf<String>() // Make it mutable
                 plateNumbers.add("Select here")
-                plateNumbers.addAll(task.result.documents.map { it.getString("plateNo")!! })
+//                plateNumbers.addAll(task.result.documents.map { it.getString("plateNo")!! })
+                plateNumbers.addAll(task.result.documents.filter { it.getString("VisitDate")!= "Expired" }.map { it.getString("plateNo")!! })
                 // create an adapter for the spinner
                 val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, plateNumbers)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)

@@ -56,7 +56,9 @@ class AdminParkingReservationFragment : Fragment() {
             if (task.isSuccessful) {
                 val plateNumbers = mutableListOf<String>() // Make it mutable
                 plateNumbers.add("Select here")
-                plateNumbers.addAll(task.result.documents.map { it.getString("plateNo")!! })
+//                plateNumbers.addAll(task.result.documents.map { it.getString("plateNo")!! })
+                plateNumbers.addAll(task.result.documents.filter { it.getString("VisitDate")!= "Expired" }.map { it.getString("plateNo")!! })
+
                 // create an adapter for the spinner
                 val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, plateNumbers)
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
