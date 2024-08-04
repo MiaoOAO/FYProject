@@ -68,7 +68,7 @@ class AdminVisitorRegistrationFragment : Fragment() {
             val vPlate = view.findViewById<TextView?>(R.id.visPlateNoAdmin).text.toString().uppercase()
             val vPhone = view.findViewById<TextView?>(R.id.visPhoneAdmin).text.toString()
 
-            if(vName != "" && vPlate != "" && vPhone != "") {
+            if(vName != "" && vPlate != "" && vPhone != "" && selectedDate != "") {
 
                 val dialog = AlertDialog.Builder(requireContext())
                     .setTitle("Confimation")

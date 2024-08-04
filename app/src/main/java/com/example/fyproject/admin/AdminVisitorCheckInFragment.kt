@@ -1,10 +1,14 @@
 package com.example.fyproject.admin
 
 import android.os.Bundle
+import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -43,6 +47,37 @@ class AdminVisitorCheckInFragment : Fragment(), VistorListAdapter.ItemClickListe
         recyclerView.setHasFixedSize(true)
 
         fetchDataFromFirestore()
+
+        val history = mutableListOf<String>()
+        history.add("Today")
+        history.add("Past History")
+
+        val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, history)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        val spinner = view.findViewById<Spinner>(R.id.history_spinnerAdmin)
+        spinner.adapter = adapter
+
+        // handle spinner selection
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                val selectedOption = history[position]
+
+                if(selectedOption == "Today"){
+                    fetchDataFromFirestore()
+                }else{
+                    fetchDataFromFirestoreHistory()
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // do something when nothing is selected
+            }
+        }
+
+
 
         visSearchBtn.setOnClickListener{
             val visSearch = visSearchTf.text.toString().uppercase()
@@ -93,7 +128,26 @@ class AdminVisitorCheckInFragment : Fragment(), VistorListAdapter.ItemClickListe
         val today = formatter.format(Date())
 
 //        admin side --> val query = db.collection(collectionName)
-        val query = db.collection(collectionName).whereEqualTo("VisitDate", today).whereNotEqualTo("checkInDate", today)
+        val query = db.collection(collectionName).whereEqualTo("VisitDate", today).whereEqualTo("checkInDate", "")
+        query.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val dataList = task.result?.toObjects<visitor>() ?: emptyList()
+                setupRecyclerView(dataList)
+            } else {
+                // Handle any errors in data retrieval
+            }
+        }
+    }
+
+    private fun fetchDataFromFirestoreHistory() {
+        val collectionName = "visitor" // Replace with your collection name
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+        val formatter = SimpleDateFormat("d/M/yyyy")
+        val today = formatter.format(Date())
+
+//        admin side --> val query = db.collection(collectionName)
+        val query = db.collection(collectionName).whereEqualTo("VisitDate", today).whereEqualTo("checkInDate", today)
         query.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val dataList = task.result?.toObjects<visitor>() ?: emptyList()

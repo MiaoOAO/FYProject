@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +19,8 @@ import com.example.fyproject.data.visitor
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.toObjects
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
 class AdminVisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener  {
@@ -38,6 +43,35 @@ class AdminVisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener
         recyclerView.setHasFixedSize(true)
 
         fetchDataFromFirestore()
+
+        val history = mutableListOf<String>()
+        history.add("Valid")
+        history.add("Not Valid/Expired")
+
+        val adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_spinner_item, history)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+        val spinner = view.findViewById<Spinner>(R.id.visitorList_spinnerAdmin)
+        spinner.adapter = adapter
+
+        // handle spinner selection
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                val selectedOption = history[position]
+
+                if(selectedOption == "Valid"){
+                    fetchDataFromFirestore()
+                }else{
+                    fetchDataFromFirestoreHistory()
+                }
+
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // do something when nothing is selected
+            }
+        }
 
         visSearchBtn.setOnClickListener{
             val visSearch = visSearchTf.text.toString().uppercase()
@@ -82,8 +116,27 @@ class AdminVisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener
         val collectionName = "visitor" // Replace with your collection name
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
+        val formatter = SimpleDateFormat("d/M/yyyy")
+        val today = formatter.format(Date())
+
 //        admin side --> val query = db.collection(collectionName)
-        val query = db.collection(collectionName)
+        val query = db.collection(collectionName).whereNotEqualTo("VisitDate", today)
+        query.get().addOnCompleteListener { task ->
+            if (task.isSuccessful) {
+                val dataList = task.result?.toObjects<visitor>() ?: emptyList()
+                setupRecyclerView(dataList)
+            } else {
+                // Handle any errors in data retrieval
+            }
+        }
+    }
+
+    private fun fetchDataFromFirestoreHistory() {
+        val collectionName = "visitor" // Replace with your collection name
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+
+//        admin side --> val query = db.collection(collectionName)
+        val query = db.collection(collectionName).whereEqualTo("VisitDate", "Expired")
         query.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val dataList = task.result?.toObjects<visitor>() ?: emptyList()

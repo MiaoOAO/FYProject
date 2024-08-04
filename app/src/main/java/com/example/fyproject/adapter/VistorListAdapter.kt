@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fyproject.R
@@ -76,9 +78,56 @@ class VistorListAdapter(private val visitorList: List<visitor>, private val list
 
         if (isValidVisit) {
             holder.date.text = visitDateString  // Set text if visit is valid
+
+            val query = db.collection("visitor").whereEqualTo("VisitDate", today)
+
+            query.get().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    for (document in task.result.documents) {
+                        val documentReference = document.reference
+                        val data = HashMap<String, Any>()
+                        data["VisitDate"] = visitDateString
+
+                        documentReference.update(data)
+                            .addOnSuccessListener {
+//                                    Toast.makeText(requireContext(),"Updated sucessfully", Toast.LENGTH_SHORT).show()
+
+                            }
+                            .addOnFailureListener { e ->
+//                                    Toast.makeText(requireContext(),"Failed", Toast.LENGTH_SHORT).show()
+                            }
+                    }
+                } else {
+//                        Toast.makeText(requireContext(),"Failed to retrieve documents", Toast.LENGTH_SHORT).show()
+                }
+            }
         } else {
             // Handle expired visitDate (e.g., set a different text or color)
+
             holder.date.text = "Expired"  // Example for expired visit
+
+                val query = db.collection("visitor").whereLessThan("VisitDate", visitDateString)
+
+                query.get().addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        for (document in task.result.documents) {
+                            val documentReference = document.reference
+                            val data = HashMap<String, Any>()
+                            data["VisitDate"] = "Expired"
+
+                            documentReference.update(data)
+                                .addOnSuccessListener {
+//                                    Toast.makeText(requireContext(),"Updated sucessfully", Toast.LENGTH_SHORT).show()
+
+                                }
+                                .addOnFailureListener { e ->
+//                                    Toast.makeText(requireContext(),"Failed", Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                    } else {
+//                        Toast.makeText(requireContext(),"Failed to retrieve documents", Toast.LENGTH_SHORT).show()
+                    }
+                }
         }
 
 
