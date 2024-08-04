@@ -55,6 +55,8 @@ class VistorListAdapter(private val visitorList: List<visitor>, private val list
         val item = visitorList[position]
         holder.name.text = item.name
         holder.plateNo.text = item.plateNo
+
+        val visitorId = item.visitorId
 //        holder.date.text = item.VisitDate
 
         val visitDateString = item.VisitDate  // Assuming VisitDate is a String
@@ -79,7 +81,7 @@ class VistorListAdapter(private val visitorList: List<visitor>, private val list
         if (isValidVisit) {
             holder.date.text = visitDateString  // Set text if visit is valid
 
-            val query = db.collection("visitor").whereEqualTo("VisitDate", today)
+            val query = db.collection("visitor").whereEqualTo("visitorId", visitorId)
 
             query.get().addOnCompleteListener { task ->
                 if (task.isSuccessful) {
@@ -106,7 +108,7 @@ class VistorListAdapter(private val visitorList: List<visitor>, private val list
 
             holder.date.text = "Expired"  // Example for expired visit
 
-                val query = db.collection("visitor").whereLessThan("VisitDate", visitDateString)
+                val query = db.collection("visitor").whereEqualTo("visitorId", visitorId)
 
                 query.get().addOnCompleteListener { task ->
                     if (task.isSuccessful) {

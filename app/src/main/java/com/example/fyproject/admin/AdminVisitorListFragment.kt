@@ -120,7 +120,7 @@ class AdminVisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener
         val today = formatter.format(Date())
 
 //        admin side --> val query = db.collection(collectionName)
-        val query = db.collection(collectionName).whereNotEqualTo("VisitDate", today)
+        val query = db.collection(collectionName).whereNotEqualTo("VisitDate", "Expired")
         query.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val dataList = task.result?.toObjects<visitor>() ?: emptyList()
