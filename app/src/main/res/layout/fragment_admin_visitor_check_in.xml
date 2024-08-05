@@ -7,6 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".admin.AdminVisitorCheckInFragment">
 
+    <View
+        android:id="@+id/view6"
+        android:layout_width="416dp"
+        android:layout_height="367dp"
+        android:background="#BCEABE"
+        android:rotation="360"
+        android:rotationX="-180"
+        android:rotationY="-34"
+        android:scaleX="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="416dp"
+        android:layout_height="367dp"
+        android:layout_marginTop="400dp"
+        android:background="#BBE1F3"
+        android:rotation="144"
+        android:rotationX="210"
+        android:rotationY="-171"
+        android:scaleX="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/visCheckInSearchAdmin"
         android:layout_width="242dp"
