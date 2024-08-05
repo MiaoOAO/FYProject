@@ -67,7 +67,7 @@ class VisitorRegistrationFragment : Fragment() {
             val vPlate = view.findViewById<TextView?>(R.id.visPlateNo).text.toString().uppercase()
             val vPhone = view.findViewById<TextView?>(R.id.visPhone).text.toString()
 
-            if(vName != "" && vPlate != "" && vPhone != "") {
+            if(vName != "" && vPlate != "" && vPhone != ""  && selectedDate != null) {
 
                 val dialog = AlertDialog.Builder(requireContext())
                     .setTitle("Confimation")

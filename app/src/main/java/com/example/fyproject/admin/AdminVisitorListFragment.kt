@@ -135,7 +135,7 @@ class AdminVisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
 //        admin side --> val query = db.collection(collectionName)
-        val query = db.collection(collectionName).whereEqualTo("VisitDate", "Expired")
+        val query = db.collection(collectionName).whereIn("VisitDate", listOf("Expired", "", null))
         query.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
                 val dataList = task.result?.toObjects<visitor>() ?: emptyList()
