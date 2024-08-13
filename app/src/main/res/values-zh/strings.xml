@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="login">登入</string>
+    <string name="forgot_password">忘记密码？</string>
+    <string name="don_t_have_an_account">还没注册为用户？</string>
+    <string name="sign_up">注册</string>
+    <string name="email">登入邮件</string>
+    <string name="password">登入密码</string>
+    <string name="admin_login">管理员登入</string>
+    <string name="welcome">欢迎</string>
+    <string name="please_fill_in_your_basic_personal_information_below">请输入您的基本个人用户资料</string>
+    <string name="select_photo">上传头像</string>
+    <string name="not_required">*自行选择</string>
+    <string name="required">*必须</string>
+    <string name="submit">提交</string>
+    <string name="identity_card_number">身份证号码</string>
+    <string name="full_name">名字</string>
+    <string name="_1_jalan_example_1_5_taman_resident_uandme">地址</string>
+    <string name="car_plate_number">车牌号</string>
+    <string name="visitor_pre_registration">来临访客预约申请</string>
+    <string name="visitor_list">访客预约列表</string>
+    <string name="parking_reservation">泊车位预约申请</string>
+    <string name="parking_reservation_list">泊车位预约列表</string>
+    <string name="home">首页</string>
+    <string name="profile">用户资料</string>
+    <string name="announcement">通知/消息</string>
+    <string name="logout">登出</string>
+    <string name="welcome_become_one_of_our_family_neighbour">欢迎成为我们社群的一份子</string>
+    <string name="phone_number">手机号</string>
+    <string name="email_address">邮件地址</string>
+    <string name="password_confirmation">二次确认密码</string>
+    <string name="empty_fields_is_not_allowed">留有空白处不被允许</string>
+    <string name="email_or_password_is_invalid">邮件或密码不正确</string>
+</resources>

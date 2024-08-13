@@ -38,12 +38,12 @@
 
     <View
         android:id="@+id/viewDetailsAdmin"
-        android:layout_width="378dp"
-        android:layout_height="439dp"
-        android:layout_marginTop="96dp"
+        android:layout_width="381dp"
+        android:layout_height="487dp"
+        android:layout_marginTop="80dp"
         android:background="@drawable/border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view6" />
 
@@ -78,7 +78,7 @@
         android:id="@+id/textView9Admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="40dp"
         android:text="Visitor's Name"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -89,7 +89,7 @@
         android:id="@+id/textView11Admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="Visitor Information"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -129,7 +129,7 @@
         android:id="@+id/textView13Admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="28dp"
         android:text="Visitor's Visit Date"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -180,9 +180,10 @@
         android:id="@+id/visDetailsDelButtonAdmin"
         android:layout_width="156dp"
         android:layout_height="51dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="116dp"
         android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/visCheckinAdmin" />
 
@@ -209,6 +210,34 @@
         android:src="@drawable/baseline_date_range_24"
         app:layout_constraintEnd_toStartOf="@+id/textView13Admin"
         app:layout_constraintTop_toTopOf="@+id/textView13Admin" />
+
+    <ImageView
+        android:id="@+id/imageView17Admin"
+        android:layout_width="38dp"
+        android:layout_height="45dp"
+        android:src="@drawable/baseline_person_add_24"
+        app:layout_constraintEnd_toStartOf="@+id/textView26Admin"
+        app:layout_constraintTop_toTopOf="@+id/textView26Admin" />
+
+    <TextView
+        android:id="@+id/visDetailsResidentAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/textView26Admin"
+        app:layout_constraintTop_toBottomOf="@+id/textView26Admin" />
+
+    <TextView
+        android:id="@+id/textView26Admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Resident Owner"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView14Admin"
+        app:layout_constraintTop_toBottomOf="@+id/visCheckinAdmin" />
 
     <Button
         android:id="@+id/parkingResCancelBtnAdmin"

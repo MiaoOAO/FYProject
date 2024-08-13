@@ -1,17 +1,17 @@
 <resources>
-    <string name="app_name">UAndMe</string>
+    <string name="app_name" translatable="false">UAndMe</string>
     <!-- to toggle the open close button of the navigation drawer -->
-    <string name="nav_open">Open Drawer</string>
-    <string name="nav_close">Close Drawer</string>
+    <string name="nav_open" translatable="false">Open Drawer</string>
+    <string name="nav_close" translatable="false">Close Drawer</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="first_fragment_label" translatable="false">First Fragment</string>
+    <string name="second_fragment_label" translatable="false">Second Fragment</string>
+    <string name="next" translatable="false">Next</string>
+    <string name="previous" translatable="false">Previous</string>
 
-    <string name="lorem_ipsum">
+    <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
@@ -47,4 +47,36 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="login">LOGIN</string>
+    <string name="forgot_password">Forgot password?</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="sign_up">SIGN UP</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="admin_login">Admin Login</string>
+    <string name="welcome">WELCOME</string>
+    <string name="please_fill_in_your_basic_personal_information_below">Please fill-in your basic personal information below</string>
+    <string name="select_photo">select photo</string>
+    <string name="not_required">*Not required</string>
+    <string name="required">*required</string>
+    <string name="submit">Submit</string>
+    <string name="identity_card_number">Identity Card number</string>
+    <string name="full_name">Full Name</string>
+    <string name="_1_jalan_example_1_5_taman_resident_uandme">Full Address</string>
+    <string name="car_plate_number">Car Plate Number</string>
+    <string name="visitor_pre_registration">Visitor Pre-Registration</string>
+    <string name="visitor_list">Visitor List</string>
+    <string name="parking_reservation">Parking Reservation</string>
+    <string name="parking_reservation_list">Parking Reservation List</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+    <string name="announcement">Announcement</string>
+    <string name="logout">Logout</string>
+    <string name="welcome_become_one_of_our_family_neighbour">Welcome become one of our family neighbour</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="email_address">Email Address</string>
+    <string name="password_confirmation">Password confirmation</string>
+    <string name="empty_fields_is_not_allowed">Empty Fields is not allowed</string>
+    <string name="email_or_password_is_invalid">Email or Password is invalid</string>
+
 </resources>

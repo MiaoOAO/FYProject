@@ -38,6 +38,7 @@ class AdminVisitorDetailsFragment : Fragment() {
         val visPhone = view.findViewById<TextView>(R.id.visDetailsPhoneAdmin)
         val visDelete = view.findViewById<Button>(R.id.visDetailsDelButtonAdmin)
         val parkingResDelete = view.findViewById<Button>(R.id.parkingResCancelBtnAdmin)
+        val visResident = view.findViewById<TextView>(R.id.visDetailsResidentAdmin)
 
 
         val selectedVisitor = arguments?.getString("visitor_id")
@@ -55,6 +56,7 @@ class AdminVisitorDetailsFragment : Fragment() {
                         val name = data["name"] as String
                         val phone = data["phone"] as String
                         val status = data["parkingStatus"] as String
+                        val owner = data["ownerId"] as String
 
                         // Update UI elements with retrieved data
                         visPlate.text = plate
@@ -62,6 +64,7 @@ class AdminVisitorDetailsFragment : Fragment() {
                         visCheckin.text = checkin
                         visName.text = name
                         visPhone.text = phone
+                        visResident.text = owner
 
                         if (status == "1") {
                             parkingResDelete.visibility = View.VISIBLE

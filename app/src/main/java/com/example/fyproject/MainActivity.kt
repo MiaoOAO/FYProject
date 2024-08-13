@@ -1,24 +1,19 @@
 package com.example.fyproject
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fyproject.admin.AdminLoginActivity
 import com.example.fyproject.databinding.ActivityMainBinding
 import com.google.firebase.Firebase
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
-import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.firestore
 
 class MainActivity : AppCompatActivity() {
@@ -70,11 +65,13 @@ class MainActivity : AppCompatActivity() {
 //                            val intent = Intent(this, UserMainPage::class.java)
 //                            startActivity(intent)
                         } else {
-                            Toast.makeText(this, "Email or Password is invalid", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this,
+                                getString(R.string.email_or_password_is_invalid), Toast.LENGTH_SHORT).show()
                         }
                     }
             }else{
-                Toast.makeText(this, "Empty Fields is not allowed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.empty_fields_is_not_allowed), Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -98,11 +95,11 @@ class MainActivity : AppCompatActivity() {
                 val getAddress = it.data?.get("address").toString()
 
                     if(getIc.isNotEmpty() || getName.isNotEmpty() || getPlateNo.isNotEmpty() || getAddress.isNotEmpty()){
-                    Toast.makeText(this, "Success to get Email:$getIc, name:$getName, phone:$getPlateNo", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this, "Success to get Email:$getIc, name:$getName, phone:$getPlateNo", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, UserMainPage::class.java)
                     startActivity(intent)
                     }else{
-                        Toast.makeText(this, "Please Fill in the required information userID: $userId", Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this, "Please Fill in the required information userID: $userId", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, ProfileFormActivity::class.java)
                         startActivity(intent)
                     }

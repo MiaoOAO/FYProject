@@ -20,6 +20,7 @@ class UserListAdapter(private val userList: List<User>, private val listener: It
         val userPlateNo : TextView = itemView.findViewById(R.id.item_userPlateNo)
         val userPhone : TextView = itemView.findViewById(R.id.item_userPhone)
         val userAddress: TextView = itemView.findViewById(R.id.item_userAddress)
+        val userId: TextView = itemView.findViewById(R.id.item_userId)
 
         init {
             itemView.setOnClickListener {
@@ -49,6 +50,7 @@ class UserListAdapter(private val userList: List<User>, private val listener: It
         holder.userPlateNo.text = item.plateNo
         holder.userPhone.text = item.phone
         holder.userAddress.text = item.address
+        holder.userId.text = item.userId
     }
 
     override fun getItemCount(): Int {

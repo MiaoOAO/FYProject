@@ -41,32 +41,39 @@ class ProfileFormActivity : AppCompatActivity() {
 
             val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
-            val progressDialog = ProgressDialog(this@ProfileFormActivity)
-            progressDialog.setMessage("Submitting....")
-            progressDialog.setCancelable(false)
-            progressDialog.show()
-
-
-            val storageReference = FirebaseStorage.getInstance().getReference("images/$userId")
-
-            storageReference.putFile(imageUri).addOnSuccessListener {
-                profileImg.setImageURI(null)
-                Toast.makeText(this@ProfileFormActivity, "Uploaded successful", Toast.LENGTH_SHORT).show()
-                if(progressDialog.isShowing) progressDialog.dismiss()
-
-            }.addOnFailureListener{
-                if(progressDialog.isShowing) progressDialog.dismiss()
-                Toast.makeText(this@ProfileFormActivity, "Failed", Toast.LENGTH_SHORT).show()
-            }
 
             val updateUserMap = hashMapOf(
                 "icNo" to icNo,
                 "name" to fName,
                 "address" to hAddress,
                 "plateNo" to plateNo,
-                "profileImg" to userId,
                 "userId" to userId
             )
+
+            if (::imageUri.isInitialized){
+
+                val progressDialog = ProgressDialog(this@ProfileFormActivity)
+                progressDialog.setMessage("Submitting....")
+                progressDialog.setCancelable(false)
+                progressDialog.show()
+
+                val storageReference = FirebaseStorage.getInstance().getReference("images/$userId")
+
+                storageReference.putFile(imageUri).addOnSuccessListener {
+                    profileImg.setImageURI(null)
+                    updateUserMap["profileImg"] = userId
+                    Toast.makeText(this@ProfileFormActivity, "Uploaded successful", Toast.LENGTH_SHORT).show()
+                    if(progressDialog.isShowing) progressDialog.dismiss()
+
+                }.addOnFailureListener{
+                    if(progressDialog.isShowing) progressDialog.dismiss()
+                    Toast.makeText(this@ProfileFormActivity, "Failed", Toast.LENGTH_SHORT).show()
+                }
+
+
+            }else{
+                updateUserMap["profileImg"] = ""
+            }
 
 
             if(icNo.isNotEmpty() && fName.isNotEmpty() && plateNo.isNotEmpty() && hAddress.isNotEmpty()){
