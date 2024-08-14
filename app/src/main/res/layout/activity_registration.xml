@@ -74,7 +74,7 @@
         android:background="@drawable/border"
         android:ems="10"
         android:hint="@string/phone_number"
-        android:inputType="text"
+        android:inputType="phone"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintHorizontal_bias="0.514"
         app:layout_constraintStart_toStartOf="@+id/textView3"
@@ -88,7 +88,7 @@
         android:background="@drawable/border"
         android:ems="10"
         android:hint="@string/email_address"
-        android:inputType="text"
+        android:inputType="text|textEmailAddress"
         app:layout_constraintEnd_toEndOf="@+id/phoneReg"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/phoneReg"
@@ -124,8 +124,8 @@
 
     <Button
         android:id="@+id/signUpBtn"
-        android:layout_width="252dp"
-        android:layout_height="46dp"
+        android:layout_width="247dp"
+        android:layout_height="51dp"
         android:layout_marginTop="36dp"
         android:text="@string/sign_up"
         app:layout_constraintEnd_toEndOf="@+id/passwordconfirmReg"

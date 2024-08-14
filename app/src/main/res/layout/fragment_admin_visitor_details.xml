@@ -178,8 +178,8 @@
 
     <Button
         android:id="@+id/visDetailsDelButtonAdmin"
-        android:layout_width="156dp"
-        android:layout_height="51dp"
+        android:layout_width="161dp"
+        android:layout_height="49dp"
         android:layout_marginTop="116dp"
         android:text="Delete"
         app:layout_constraintEnd_toEndOf="parent"
@@ -223,7 +223,7 @@
         android:id="@+id/visDetailsResidentAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="admin"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView26Admin"
         app:layout_constraintTop_toBottomOf="@+id/textView26Admin" />
@@ -241,15 +241,24 @@
 
     <Button
         android:id="@+id/parkingResCancelBtnAdmin"
-        android:layout_width="155dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="210dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="8dp"
         android:text="Cancel Parking Reserve"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/visDetailsDelButtonAdmin"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/visDetailsDelButtonAdmin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/visDetailsDelButtonAdmin"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.108" />
+
+    <TextView
+        android:id="@+id/visDetailsResidentPhoneAdmin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="admin"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/visDetailsResidentAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/visDetailsResidentAdmin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

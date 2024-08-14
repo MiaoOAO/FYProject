@@ -39,6 +39,7 @@ class AdminVisitorDetailsFragment : Fragment() {
         val visDelete = view.findViewById<Button>(R.id.visDetailsDelButtonAdmin)
         val parkingResDelete = view.findViewById<Button>(R.id.parkingResCancelBtnAdmin)
         val visResident = view.findViewById<TextView>(R.id.visDetailsResidentAdmin)
+        val visResidentPhone = view.findViewById<TextView>(R.id.visDetailsResidentPhoneAdmin)
 
 
         val selectedVisitor = arguments?.getString("visitor_id")
@@ -58,13 +59,31 @@ class AdminVisitorDetailsFragment : Fragment() {
                         val status = data["parkingStatus"] as String
                         val owner = data["ownerId"] as String
 
-                        // Update UI elements with retrieved data
                         visPlate.text = plate
                         visDate.text = visitDate
                         visCheckin.text = checkin
                         visName.text = name
                         visPhone.text = phone
-                        visResident.text = owner
+
+//                        Toast.makeText(requireContext(), "$owner", Toast.LENGTH_SHORT).show()
+
+                            val docRefUser = fStore.collection("user").whereEqualTo("userId", owner)
+                            docRefUser.get().addOnSuccessListener { querySnapshot ->
+                                for (documents in querySnapshot.documents) {
+                                    val dataUser = documents.data
+
+                                    if (dataUser != null) {
+                                        val residentPhone = dataUser["phone"] as String
+                                        val residentName = dataUser["name"] as String
+
+                                            // Update UI elements with retrieved data
+                                            visResident.text = residentName
+                                            visResidentPhone.text = residentPhone
+
+                                    }
+
+                                }
+                            }
 
                         if (status == "1") {
                             parkingResDelete.visibility = View.VISIBLE
@@ -79,6 +98,7 @@ class AdminVisitorDetailsFragment : Fragment() {
                         }
 
                         Linkify.addLinks(visPhone, Linkify.PHONE_NUMBERS)
+                        Linkify.addLinks(visResidentPhone, Linkify.PHONE_NUMBERS)
 
                         Toast.makeText(requireContext(), "Plate: $plate", Toast.LENGTH_SHORT).show()
                     }
@@ -86,6 +106,7 @@ class AdminVisitorDetailsFragment : Fragment() {
             }.addOnFailureListener { exception ->
                 Toast.makeText(requireContext(), "Error, data retrieve from fireStore failed", Toast.LENGTH_SHORT).show()
             }
+
 
 
 

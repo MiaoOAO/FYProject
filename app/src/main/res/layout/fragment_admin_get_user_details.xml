@@ -191,7 +191,20 @@
         android:layout_width="156dp"
         android:layout_height="51dp"
         android:layout_marginTop="20dp"
+        android:backgroundTint="#E14242"
         android:text="Delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewUserAdmin" />
+
+    <Button
+        android:id="@+id/userDetailsApproveButtonUserAdmin"
+        android:layout_width="156dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="84dp"
+        android:backgroundTint="#669C27"
+        android:text="Approve"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

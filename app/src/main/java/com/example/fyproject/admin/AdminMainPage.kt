@@ -51,12 +51,14 @@ class AdminMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelect
         when(item.itemId){
             R.id.home_nav_menu -> {
                 setToolbarTitle("Home")
-//                changeFragment(UserMainPageFragment())
+                val fragment = supportFragmentManager.beginTransaction()
+                fragment.replace(R.id.adminFragmentContainer, AdminMainPageFragment()).commit()
             }
 
             R.id.visitorList_nav_menu -> {
                 setToolbarTitle("Visitor List")
-//                changeFragment(VisitorListFragment())
+                val fragment = supportFragmentManager.beginTransaction()
+                fragment.replace(R.id.adminFragmentContainer, AdminVisitorListFragment()).commit()
             }
 
             R.id.profile_nav_menu-> {

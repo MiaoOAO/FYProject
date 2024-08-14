@@ -2,7 +2,6 @@ package com.example.fyproject
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fyproject.databinding.ActivityRegistrationBinding
@@ -40,6 +39,7 @@ class Registration : AppCompatActivity() {
                 "address" to "",
                 "plateNo" to "",
                 "profileImg" to "",
+                "approve" to "0"
             )
 
 
@@ -54,7 +54,7 @@ class Registration : AppCompatActivity() {
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
 
                         if (it.isSuccessful) {
-                            val intent = Intent(this, MainActivity::class.java)
+                            val intent = Intent(this, ProfileFormActivity::class.java)
 
                             //connent and store the user data to firebase firestore
                             val userId = FirebaseAuth.getInstance().currentUser!!.uid

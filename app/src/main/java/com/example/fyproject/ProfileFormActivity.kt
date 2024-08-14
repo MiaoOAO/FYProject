@@ -78,30 +78,50 @@ class ProfileFormActivity : AppCompatActivity() {
 
             if(icNo.isNotEmpty() && fName.isNotEmpty() && plateNo.isNotEmpty() && hAddress.isNotEmpty()){
 
-                val intent = Intent(this, UserMainPage::class.java)
+//                val intent = Intent(this, UserMainPage::class.java)
 
                 fStore.collection("user").document(userId)
                                 .update(updateUserMap as Map<String, Any>)
                                 .addOnSuccessListener {
-                                    Toast.makeText(
-                                                 this,
-                                                 "Profile updated",
-                                                 Toast.LENGTH_SHORT
-                                             ).show()
+                                    Toast.makeText(this, "Profile updated", Toast.LENGTH_SHORT).show()
                                 }
                                 .addOnFailureListener { exception ->
-                                    Toast.makeText(
-                                        this,
-                                        "Profile update failed $userId",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
+                                    Toast.makeText(this, "Profile update failed $userId", Toast.LENGTH_SHORT).show()
                                 }
 
-                startActivity(intent)
+//                startActivity(intent)
 
             }else{
                 Toast.makeText(this, "Empty Fields is not allowed", Toast.LENGTH_SHORT).show()
             }
+
+
+            val ref = fStore.collection("user").document(userId)
+
+            ref.get().addOnSuccessListener {
+                if(it != null){
+                    val getIc = it.data?.get("icNo").toString()
+                    val getName = it.data?.get("name").toString()
+                    val getPlateNo = it.data?.get("plateNo").toString()
+                    val getAddress = it.data?.get("address").toString()
+                    val getApprove = it.data?.get("approve").toString()
+
+                    if(getIc.isNotEmpty() && getName.isNotEmpty() && getPlateNo.isNotEmpty() && getAddress.isNotEmpty() && getApprove == "1"){
+//                    Toast.makeText(this, "Success to get Email:$getIc, name:$getName, phone:$getPlateNo", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(this, UserMainPage::class.java)
+                        startActivity(intent)
+                    }else if(getIc.isNotEmpty() && getName.isNotEmpty() && getPlateNo.isNotEmpty() && getAddress.isNotEmpty() && getApprove == "0"){
+                        Toast.makeText(this, "Verifying account, if exceed 48 hours, please contact management", Toast.LENGTH_LONG).show()
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+
+                }
+            }
+                .addOnFailureListener{
+                    Toast.makeText(this, "failed", Toast.LENGTH_SHORT).show()
+                }
+
         }
 
 

@@ -61,9 +61,24 @@ class MainActivity : AppCompatActivity() {
             if(email.isNotEmpty() && pass.isNotEmpty()){
                     firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
+
                             checkUserProfileComplete()
-//                            val intent = Intent(this, UserMainPage::class.java)
-//                            startActivity(intent)
+
+                        // Admin approve check
+//                            val userId = FirebaseAuth.getInstance().currentUser!!.uid
+//                            val ref = fireStoreDb.collection("user").document(userId)
+//                            ref.get().addOnSuccessListener {
+//                                if (it != null) {
+//                                    val getApprove = it.data?.get("approve").toString()
+//
+//                                    if (getApprove == "1") {
+//                                        checkUserProfileComplete()
+//                                    } else {
+//                                        Toast.makeText(this, "Still in pending, if exceed 48 hours, please contact with management", Toast.LENGTH_SHORT).show()
+//                                    }
+//                                }
+//                            }
+
                         } else {
                             Toast.makeText(this,
                                 getString(R.string.email_or_password_is_invalid), Toast.LENGTH_SHORT).show()
@@ -93,11 +108,14 @@ class MainActivity : AppCompatActivity() {
                 val getName = it.data?.get("name").toString()
                 val getPlateNo = it.data?.get("plateNo").toString()
                 val getAddress = it.data?.get("address").toString()
+                val getApprove = it.data?.get("approve").toString()
 
-                    if(getIc.isNotEmpty() || getName.isNotEmpty() || getPlateNo.isNotEmpty() || getAddress.isNotEmpty()){
+                    if(getIc.isNotEmpty() && getName.isNotEmpty() && getPlateNo.isNotEmpty() && getAddress.isNotEmpty() && getApprove == "1"){
 //                    Toast.makeText(this, "Success to get Email:$getIc, name:$getName, phone:$getPlateNo", Toast.LENGTH_SHORT).show()
                     val intent = Intent(this, UserMainPage::class.java)
                     startActivity(intent)
+                    }else if(getIc.isNotEmpty() && getName.isNotEmpty() && getPlateNo.isNotEmpty() && getAddress.isNotEmpty() && getApprove == "0"){
+                        Toast.makeText(this, "Verifying account, if exceed 48 hours, please contact management", Toast.LENGTH_LONG).show()
                     }else{
 //                        Toast.makeText(this, "Please Fill in the required information userID: $userId", Toast.LENGTH_SHORT).show()
                         val intent = Intent(this, ProfileFormActivity::class.java)

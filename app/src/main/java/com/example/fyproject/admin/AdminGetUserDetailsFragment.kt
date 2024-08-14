@@ -34,6 +34,8 @@ class AdminGetUserDetailsFragment : Fragment() {
         val userIcNo = view.findViewById<TextView>(R.id.userDetailsIcNoUserAdmin)
         val userPhone = view.findViewById<TextView>(R.id.userDetailsPhoneUserAdmin)
         val userDelete = view.findViewById<Button>(R.id.userDetailsDelButtonUserAdmin)
+        val userApprove = view.findViewById<Button>(R.id.userDetailsApproveButtonUserAdmin)
+
         val selectedUser = arguments?.getString("user_id")
 
         if (selectedUser != null) {
@@ -48,6 +50,7 @@ class AdminGetUserDetailsFragment : Fragment() {
                         val icNo = data["icNo"] as String
                         val name = data["name"] as String
                         val phone = data["phone"] as String
+                        val approve = data["approve"] as String
 //                        val status = data["parkingStatus"] as String
 
                         // Update UI elements with retrieved data
@@ -57,11 +60,11 @@ class AdminGetUserDetailsFragment : Fragment() {
                         userName.text = name
                         userPhone.text = phone
 
-//                        if (status == "1") {
-//                            parkingResDelete.visibility = View.VISIBLE
-//                        } else {
-//                            parkingResDelete.visibility = View.INVISIBLE
-//                        }
+                        if (approve == "0") {
+                            userApprove.visibility = View.VISIBLE
+                        } else {
+                            userApprove.visibility = View.INVISIBLE
+                        }
 
 
 //                        if(visCheckin.text == ""){
@@ -91,12 +94,51 @@ class AdminGetUserDetailsFragment : Fragment() {
                 .setPositiveButton("Yes, Delete") { dialog, which ->
 
                     selectedUser?.let { userId ->
-                        val docRef = fStore.collection("visitor").document(userId)
+                        val docRef = fStore.collection("user").document(userId)
 
                         docRef.delete()
                             .addOnSuccessListener {
                                 // Document deleted successfully
                                 Toast.makeText(requireContext(), "Document deleted", Toast.LENGTH_SHORT).show()
+                                val transaction = activity?.supportFragmentManager?.beginTransaction()
+                                transaction?.replace(R.id.adminFragmentContainer, AdminGetUserListFragment())
+                                transaction?.addToBackStack(null)
+                                transaction?.commit()
+                            }
+                            .addOnFailureListener { exception ->
+                                // Deletion failed
+                                Toast.makeText(requireContext(), "Error", Toast.LENGTH_SHORT).show()
+                            }
+                    } ?: run {
+                        // Handle case where selectedVisitor is null
+                        Toast.makeText(requireContext(), "No visitor selected", Toast.LENGTH_SHORT).show()
+                    }
+
+
+                }
+                .setNegativeButton("Cancel", null)
+                .create()
+            dialog.show()
+
+        }
+
+        userApprove.setOnClickListener {
+
+            val dialog = AlertDialog.Builder(requireContext())
+                .setTitle("Approve the account register?")
+                .setPositiveButton("Yes, Approve") { dialog, which ->
+
+                    selectedUser?.let { userId ->
+                        val docRef = fStore.collection("user").document(userId)
+
+                        val updates = hashMapOf<String, Any>(
+                            "approve" to "1"
+                        )
+
+                        docRef.update(updates)
+                            .addOnSuccessListener {
+                                // Document deleted successfully
+                                Toast.makeText(requireContext(), "Account Approved", Toast.LENGTH_SHORT).show()
                                 val transaction = activity?.supportFragmentManager?.beginTransaction()
                                 transaction?.replace(R.id.adminFragmentContainer, AdminGetUserListFragment())
                                 transaction?.addToBackStack(null)
