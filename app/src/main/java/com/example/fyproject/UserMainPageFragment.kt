@@ -1,5 +1,6 @@
 package com.example.fyproject
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -42,6 +43,7 @@ class UserMainPageFragment : Fragment() {
         val visitorList: Button= view.findViewById(R.id.visitorListBtn)
         val parkingRes:Button = view.findViewById(R.id.parkingResBtn)
         val parkingList:Button = view.findViewById(R.id.parkingListBtn)
+        val chatBox:Button = view.findViewById(R.id.chatBoxBtn)
 //        val uploadImg:Button = view.findViewById(R.id.uploadImgBtn)
 
         visitorList.setOnClickListener{
@@ -62,6 +64,11 @@ class UserMainPageFragment : Fragment() {
         parkingList.setOnClickListener{
             changeFragment(ParkingListFragment())
             updateToolbarTitle("Visitor List")
+        }
+
+        chatBox.setOnClickListener{
+            val intent = Intent(requireContext(), ChatActivity::class.java)
+            startActivity(intent)
         }
 
 //        uploadImg.setOnClickListener{

@@ -64,10 +64,10 @@
         app:iconSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.117"
+        app:layout_constraintHorizontal_bias="0.118"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewPager2"
-        app:layout_constraintVertical_bias="0.135" />
+        app:layout_constraintVertical_bias="0.078" />
 
     <Button
         android:id="@+id/visitorListBtn"
@@ -89,8 +89,8 @@
         android:id="@+id/parkingResBtn"
         android:layout_width="175dp"
         android:layout_height="135dp"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="#A280DF"
+        android:layout_marginTop="4dp"
+        android:backgroundTint="#37469C"
         android:text="@string/parking_reservation"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_local_parking_24"
@@ -102,19 +102,37 @@
         app:layout_constraintTop_toBottomOf="@+id/visitorRegBtn" />
 
     <Button
+        android:id="@+id/chatBoxBtn"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#448847"
+        android:text="Society Chat"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_chat_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/parkingListBtn"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/parkingResBtn"
+        app:layout_constraintTop_toBottomOf="@+id/parkingListBtn" />
+
+    <Button
         android:id="@+id/parkingListBtn"
         android:layout_width="175dp"
         android:layout_height="135dp"
-        android:backgroundTint="#A280DF"
+        android:layout_marginStart="8dp"
+        android:backgroundTint="#37469C"
         android:text="@string/parking_reservation_list"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_checklist_24"
         app:iconGravity="top"
         app:iconSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/parkingResBtn"
         app:layout_constraintEnd_toEndOf="@+id/visitorListBtn"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/visitorListBtn"
-        app:layout_constraintTop_toTopOf="@+id/parkingResBtn" />
+        app:layout_constraintStart_toEndOf="@+id/parkingResBtn"
+        app:layout_constraintTop_toTopOf="@+id/parkingResBtn"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
