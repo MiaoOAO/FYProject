@@ -1,11 +1,13 @@
 package com.example.fyproject.admin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.example.fyproject.ChatActivity
 import com.example.fyproject.R
 import com.example.fyproject.listener.UserMainPageListener
 
@@ -26,6 +28,7 @@ class AdminMainPageFragment : Fragment() {
         val allUserListAdmin:Button = view.findViewById(R.id.allUserBtnAdmin)
         val uploadBtn : Button = view.findViewById(R.id.uploadAnnocBtnAdmin)
         val visitorCheckInBtn : Button = view.findViewById(R.id.checkInBtnAdmin)
+        val chatBoxBtn : Button = view.findViewById(R.id.chatBoxBtnAdmin)
 
 
         visitorRegAdmin.setOnClickListener{
@@ -61,6 +64,12 @@ class AdminMainPageFragment : Fragment() {
         visitorCheckInBtn.setOnClickListener{
             changeFragment(AdminVisitorCheckInFragment())
             updateToolbarTitle("Check-In Today")
+        }
+
+        chatBoxBtn.setOnClickListener{
+            val intent = Intent(requireContext(), AdminChatActivity::class.java)
+            startActivity(intent)
+            updateToolbarTitle("Society Chat")
         }
 
 

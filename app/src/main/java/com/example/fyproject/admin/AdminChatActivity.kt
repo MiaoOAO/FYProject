@@ -1,4 +1,4 @@
-package com.example.fyproject
+package com.example.fyproject.admin
 
 import ChatAdapter
 import android.os.Bundle
@@ -7,22 +7,20 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fyproject.R
 import com.example.fyproject.data.ChatMessage
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Query
 import java.util.Calendar
 import java.util.TimeZone
 
-
-class ChatActivity : AppCompatActivity() {
-
+class AdminChatActivity : AppCompatActivity() {
     private lateinit var firestore: FirebaseFirestore
     private lateinit var chatAdapter: ChatAdapter
     private lateinit var messageList: MutableList<ChatMessage>
     private lateinit var auth: FirebaseAuth
-    private lateinit var listenerRegistration: ListenerRegistration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,27 +39,24 @@ class ChatActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = chatAdapter
 
-
         // Listening for new messages
-        listenerRegistration = chatRef
-            .orderBy("timestamp", Query.Direction.ASCENDING)
-            .addSnapshotListener { snapshots, e ->
-                if (e != null) {
-//                    Log.w("ChatActivity", "Listen failed.", e)
+        chatRef.orderBy("timestamp", Query.Direction.ASCENDING)
+            .addSnapshotListener { snapshots, error ->
+                if (error != null) {
+                    // Handle error
                     return@addSnapshotListener
                 }
 
-                if (snapshots != null) {
-                    messageList.clear()
-                    for (doc in snapshots.documents) {
-                        val message = doc.toObject(ChatMessage::class.java)
-                        if (message != null) {
-                            messageList.add(message)
+                for (docChange in snapshots?.documentChanges!!) {
+                    when (docChange.type) {
+                        DocumentChange.Type.ADDED -> {
+                            val chatMessage = docChange.document.toObject(ChatMessage::class.java)
+                            messageList.add(chatMessage)
+                            chatAdapter.notifyItemInserted(messageList.size - 1)
+                            recyclerView.scrollToPosition(messageList.size - 1)
                         }
+                        else -> {}
                     }
-                    chatAdapter.notifyDataSetChanged()
-                    // Scroll to the latest message
-                    recyclerView.scrollToPosition(messageList.size - 1)
                 }
             }
 
@@ -79,7 +74,7 @@ class ChatActivity : AppCompatActivity() {
                 val chatMessage = ChatMessage(
                     id = messageId,
                     message = messageText,
-                    senderId = auth.currentUser?.uid ?: "",
+                    senderId = "Admin",
                     timestamp = timestampInKL
                 )
                 chatRef.document(messageId).set(chatMessage)
@@ -87,10 +82,4 @@ class ChatActivity : AppCompatActivity() {
             }
         }
     }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        listenerRegistration.remove() // Remove the listener when the activity is destroyed
-    }
-
 }

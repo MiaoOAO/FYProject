@@ -37,11 +37,27 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/chatBoxBtnAdmin"
+        android:layout_width="175dp"
+        android:layout_height="135dp"
+        android:backgroundTint="#448847"
+        android:text="Society Chat"
+        app:cornerRadius="10dp"
+        app:icon="@drawable/baseline_chat_24"
+        app:iconGravity="top"
+        app:iconSize="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/uploadAnnocBtnAdmin"
+        app:layout_constraintEnd_toEndOf="@+id/checkInBtnAdmin"
+        app:layout_constraintStart_toStartOf="@+id/checkInBtnAdmin"
+        app:layout_constraintTop_toTopOf="@+id/uploadAnnocBtnAdmin" />
+
+    <Button
         android:id="@+id/visRegBtnAdmin"
         android:layout_width="175dp"
         android:layout_height="135dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="52dp"
+        android:backgroundTint="#E66C63"
         android:text="Visitor Pre-Registration"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_app_registration_24"
@@ -67,36 +83,37 @@
         android:id="@+id/uploadAnnocBtnAdmin"
         android:layout_width="175dp"
         android:layout_height="135dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
         android:text="Upload announcement"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_newspaper_24"
         app:iconGravity="top"
         app:iconSize="50dp"
-        app:layout_constraintBottom_toBottomOf="@+id/allUserBtnAdmin"
-        app:layout_constraintStart_toEndOf="@+id/allUserBtnAdmin"
-        app:layout_constraintTop_toTopOf="@+id/allUserBtnAdmin"
-        app:layout_constraintVertical_bias="0.0" />
+        android:backgroundTint="#448847"
+        app:layout_constraintEnd_toEndOf="@+id/allUserBtnAdmin"
+        app:layout_constraintStart_toStartOf="@+id/allUserBtnAdmin"
+        app:layout_constraintTop_toBottomOf="@+id/allUserBtnAdmin" />
 
     <Button
         android:id="@+id/checkInBtnAdmin"
         android:layout_width="175dp"
         android:layout_height="135dp"
-        android:layout_marginTop="32dp"
         android:text="Manual Visitor CheckIn"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_vertical_align_top_24"
         app:iconGravity="top"
         app:iconSize="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/allUserBtnAdmin" />
+        app:layout_constraintBottom_toBottomOf="@+id/allUserBtnAdmin"
+        app:layout_constraintEnd_toEndOf="@+id/parkingListBtnAdmin"
+        app:layout_constraintStart_toStartOf="@+id/parkingListBtnAdmin"
+        app:layout_constraintTop_toTopOf="@+id/allUserBtnAdmin" />
 
     <Button
         android:id="@+id/parkingListBtnAdmin"
         android:layout_width="175dp"
         android:layout_height="135dp"
         android:layout_marginStart="12dp"
+        android:backgroundTint="#37469C"
         android:text="Parking Reservation List"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_checklist_24"
@@ -112,6 +129,7 @@
         android:layout_width="175dp"
         android:layout_height="135dp"
         android:layout_marginTop="36dp"
+        android:backgroundTint="#37469C"
         android:text="Parking Reservation"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_local_parking_24"
@@ -125,6 +143,7 @@
         android:layout_width="175dp"
         android:layout_height="135dp"
         android:layout_marginStart="12dp"
+        android:backgroundTint="#E66C63"
         android:text="Visitor List"
         app:cornerRadius="10dp"
         app:icon="@drawable/baseline_list_alt_24"

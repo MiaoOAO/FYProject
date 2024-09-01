@@ -80,6 +80,11 @@ class UserMainPage : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 changeFragment(announcementFragment())
             }
 
+            R.id.chat_nav_menu-> {
+                val intent = Intent(this, ChatActivity::class.java)
+                startActivity(intent)
+            }
+
             R.id.logout_nav_menu-> {
                 var intent = Intent(this, MainActivity::class.java)
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)

@@ -1,4 +1,5 @@
 
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,7 +40,15 @@ class ChatAdapter(
         private val timestampTextView: TextView = itemView.findViewById(R.id.timestampTextView)
 
         fun bind(chatMessage: ChatMessage) {
-            senderTextView.text = chatMessage.senderId
+
+            val displaySenderId = if (chatMessage.senderId == currentUserId) {
+                "You"
+            } else {
+                chatMessage.senderId
+            }
+
+            senderTextView.text = displaySenderId
+            senderTextView.setTypeface(null, Typeface.BOLD)
             messageTextView.text = chatMessage.message
 
             // Format the timestamp to include both date and time
