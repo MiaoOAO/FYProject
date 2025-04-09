@@ -57,27 +57,11 @@ class MainActivity : AppCompatActivity() {
             val email = binding.emailLogin.text.toString()
             val pass = binding.passLogin.text.toString()
 
-
             if(email.isNotEmpty() && pass.isNotEmpty()){
                     firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                         if (it.isSuccessful) {
 
                             checkUserProfileComplete()
-
-                        // Admin approve check
-//                            val userId = FirebaseAuth.getInstance().currentUser!!.uid
-//                            val ref = fireStoreDb.collection("user").document(userId)
-//                            ref.get().addOnSuccessListener {
-//                                if (it != null) {
-//                                    val getApprove = it.data?.get("approve").toString()
-//
-//                                    if (getApprove == "1") {
-//                                        checkUserProfileComplete()
-//                                    } else {
-//                                        Toast.makeText(this, "Still in pending, if exceed 48 hours, please contact with management", Toast.LENGTH_SHORT).show()
-//                                    }
-//                                }
-//                            }
 
                         } else {
                             Toast.makeText(this,

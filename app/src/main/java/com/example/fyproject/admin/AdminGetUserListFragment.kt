@@ -109,7 +109,7 @@ class AdminGetUserListFragment : Fragment(), UserListAdapter.ItemClickListener {
     }
 
     private fun fetchDataFromFirestore() {
-        val collectionName = "user" // Replace with your collection name
+        val collectionName = "user"
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
 //        admin side --> val query = db.collection(collectionName)
@@ -119,13 +119,13 @@ class AdminGetUserListFragment : Fragment(), UserListAdapter.ItemClickListener {
                 val dataList = task.result?.toObjects<User>() ?: emptyList()
                 setupRecyclerView(dataList)
             } else {
-                // Handle any errors in data retrieval
+                // Handle any errors
             }
         }
     }
 
     private fun fetchDataFromFirestoreApproveStatus() {
-        val collectionName = "user" // Replace with your collection name
+        val collectionName = "user"
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
 //        admin side --> val query = db.collection(collectionName)
@@ -135,7 +135,7 @@ class AdminGetUserListFragment : Fragment(), UserListAdapter.ItemClickListener {
                 val dataList = task.result?.toObjects<User>() ?: emptyList()
                 setupRecyclerView(dataList)
             } else {
-                // Handle any errors in data retrieval
+                // Handle any errors
             }
         }
     }

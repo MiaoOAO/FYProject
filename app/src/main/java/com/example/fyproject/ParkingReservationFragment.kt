@@ -126,7 +126,7 @@ class ParkingReservationFragment : Fragment() {
                 .setMessage("Visitor Name : ${pResName.text} \nVisitor Plate : ${plateNoUpdate} \nVisitor Phone : ${pResPhone.text} \nParking Reserve Date : ${pResVisDate.text}")
                 .setPositiveButton("Submit") { dialog, which ->
 
-                    // Get the current document reference (replace with your document reference)
+                    // Get the current document reference
                     val query = db.collection("visitor").whereEqualTo("plateNo", plateNoUpdate)
 
                     query.get().addOnCompleteListener { task ->
@@ -173,11 +173,6 @@ class ParkingReservationFragment : Fragment() {
                 .setNegativeButton("Cancel", null)
                 .create()
             dialog.show()
-
-
-
-
-
 
         }
 

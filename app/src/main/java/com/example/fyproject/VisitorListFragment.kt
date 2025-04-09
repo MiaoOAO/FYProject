@@ -112,13 +112,13 @@ class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
     }
 
     private fun fetchDataFromFirestore() {
-        val collectionName = "visitor" // Replace with your collection name
+        val collectionName = "visitor"
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val formatter = SimpleDateFormat("d/M/yyyy")
         val today = formatter.format(Date())
 
-//        admin side --> val query = db.collection(collectionName)
+
         val query1 = db.collection(collectionName).whereNotIn("VisitDate", listOf("Expired", "expired", "EXPIRED",""))
         query1.get().addOnCompleteListener { task ->
             if (task.isSuccessful) {
@@ -127,7 +127,7 @@ class VisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener {
                 val dataList = filteredResults.map { it.toObject(visitor::class.java) }.filterNotNull()
                 setupRecyclerView(dataList)
             } else {
-                // Handle any errors in data retrieval
+
             }
         }
     }

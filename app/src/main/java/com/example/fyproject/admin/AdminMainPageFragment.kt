@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
-import com.example.fyproject.ChatActivity
 import com.example.fyproject.R
 import com.example.fyproject.listener.UserMainPageListener
 
@@ -60,11 +59,18 @@ class AdminMainPageFragment : Fragment() {
             changeFragment(AdminGetUserListFragment())
             updateToolbarTitle("User List")
         }
+//
+//        visitorCheckInBtn.setOnClickListener{
+//            changeFragment(AdminVisitorCheckInFragment())
+//            updateToolbarTitle("Check-In Today")
+//        }
+
 
         visitorCheckInBtn.setOnClickListener{
-            changeFragment(AdminVisitorCheckInFragment())
+            changeFragment(AdminOcrScanFragment())
             updateToolbarTitle("Check-In Today")
         }
+
 
         chatBoxBtn.setOnClickListener{
             val intent = Intent(requireContext(), AdminChatActivity::class.java)

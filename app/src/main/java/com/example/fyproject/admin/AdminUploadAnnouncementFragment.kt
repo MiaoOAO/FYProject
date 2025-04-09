@@ -78,7 +78,7 @@ class AdminUploadAnnouncementFragment : Fragment() {
 
     private fun selectPdf() {
         val intent = Intent()
-        intent.type = "application/pdf" // Specify PDF MIME type
+        intent.type = "application/pdf" // Specify PDF type
         intent.action = Intent.ACTION_GET_CONTENT
 
         startActivityForResult(intent, 100)

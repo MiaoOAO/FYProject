@@ -47,8 +47,6 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     //implementation("com.google.firebase:firebase-auth:23.0.0")
-    implementation("com.google.firebase:firebase-database:21.0.0")
-    implementation("com.google.firebase:firebase-firestore:25.0.0")
     implementation("androidx.activity:activity:1.8.0")
     implementation("androidx.navigation:navigation-fragment-ktx:2.6.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.6.0")
@@ -59,17 +57,28 @@ dependencies {
     implementation("de.hdodenhof:circleimageview:3.1.0")
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation ("com.google.firebase:firebase-storage:20.0.0")
+    implementation("com.google.firebase:firebase-database:21.0.0")
+    implementation("com.google.firebase:firebase-firestore:25.0.0")
+    implementation("com.google.firebase:firebase-auth")
     // Add the dependency for the Firebase Authentication library
     // When using the BoM, you don't specify versions in Firebase library dependencies
-    implementation("com.google.firebase:firebase-auth")
     implementation("androidx.viewpager2:viewpager2:1.0.0")
     // for adding recyclerview
     implementation ("androidx.recyclerview:recyclerview:1.3.2")
     // for adding cardview
     implementation ("androidx.cardview:cardview:1.0.0")
-    implementation ("com.google.firebase:firebase-storage:20.0.0")
     implementation ("org.tensorflow:tensorflow-lite:2.5.0")
     implementation ("org.tensorflow:tensorflow-lite-support:0.1.0")
     implementation ("com.github.bumptech.glide:glide:4.14.2") // Replace with desired version
     annotationProcessor ("com.github.bumptech.glide:compiler:4.14.2") // Replace with desired version
+    implementation("androidx.camera:camera-core:1.3.1")
+    implementation("androidx.camera:camera-camera2:1.3.1")
+    implementation("androidx.camera:camera-lifecycle:1.3.1")
+    implementation("androidx.camera:camera-view:1.3.1")
+    implementation("androidx.camera:camera-extensions:1.3.1")
+    implementation("com.google.mlkit:text-recognition:16.0.0")
+    // Guava for ListenableFuture
+    implementation("com.google.guava:guava:31.1-android")
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
 }

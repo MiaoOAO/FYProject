@@ -112,7 +112,7 @@ class AdminVisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener
     }
 
     private fun fetchDataFromFirestore() {
-        val collectionName = "visitor" // Replace with your collection name
+        val collectionName = "visitor"
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
         val formatter = SimpleDateFormat("d/M/yyyy")
@@ -131,7 +131,7 @@ class AdminVisitorListFragment : Fragment(), VistorListAdapter.ItemClickListener
     }
 
     private fun fetchDataFromFirestoreHistory() {
-        val collectionName = "visitor" // Replace with your collection name
+        val collectionName = "visitor"
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
 
 //        admin side --> val query = db.collection(collectionName)
