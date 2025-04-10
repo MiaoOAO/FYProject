@@ -11,23 +11,20 @@ import android.widget.Toast
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
+import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.example.fyproject.R
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.mlkit.vision.common.InputImage
-import java.util.concurrent.Executors
-import androidx.camera.core.Preview
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
 import java.util.concurrent.ExecutorService
+import java.util.concurrent.Executors
 
 
 class AdminOcrScanFragment : Fragment() {
@@ -44,7 +41,7 @@ class AdminOcrScanFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         val view = inflater.inflate(R.layout.fragment_admin_ocr_scan, container, false)
         previewView = view.findViewById(R.id.previewView)
-        firestore = Firebase.firestore
+        firestore = FirebaseFirestore.getInstance()
         textRecognizer = TextRecognition.getClient(TextRecognizerOptions.DEFAULT_OPTIONS)
         return view
     }
@@ -101,12 +98,13 @@ class AdminOcrScanFragment : Fragment() {
     }
 
     private fun matchPlateWithFirestore(plateNumber: String) {
-        firestore.collection("registered_plates")
-            .document(plateNumber)
+
+        firestore.collection("visitor").whereEqualTo("plateNo", plateNumber)
             .get()
-            .addOnSuccessListener { doc ->
-                if (doc.exists()) {
-                    val owner = doc.getString("ownerName") ?: "Unknown"
+            .addOnSuccessListener { querySnapshot ->
+                if (!querySnapshot.isEmpty) {
+                    val doc = querySnapshot.documents[0]
+                    val owner = doc.getString("name") ?: "Unknown"
                     showMatchedCard(plateNumber, owner, "Match Found")
                 } else {
                     showMatchedCard(plateNumber, "-", "No Match")
