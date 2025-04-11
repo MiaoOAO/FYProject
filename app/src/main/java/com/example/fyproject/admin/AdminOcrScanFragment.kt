@@ -23,6 +23,8 @@ import com.google.mlkit.vision.common.InputImage
 import com.google.mlkit.vision.text.TextRecognition
 import com.google.mlkit.vision.text.TextRecognizer
 import com.google.mlkit.vision.text.latin.TextRecognizerOptions
+import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -36,6 +38,8 @@ class AdminOcrScanFragment : Fragment() {
     private lateinit var textRecognizer: TextRecognizer
     private var lastRecognizedText = ""
     private var cameraExecutor: ExecutorService = Executors.newSingleThreadExecutor()
+    val formatter = SimpleDateFormat("d/M/yyyy")
+    val today = formatter.format(Date())
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -99,13 +103,36 @@ class AdminOcrScanFragment : Fragment() {
 
     private fun matchPlateWithFirestore(plateNumber: String) {
 
-        firestore.collection("visitor").whereEqualTo("plateNo", plateNumber)
-            .get()
+        val docRef = firestore.collection("visitor").whereEqualTo("plateNo", plateNumber)
+
+            docRef.get()
             .addOnSuccessListener { querySnapshot ->
                 if (!querySnapshot.isEmpty) {
                     val doc = querySnapshot.documents[0]
                     val owner = doc.getString("name") ?: "Unknown"
                     showMatchedCard(plateNumber, owner, "Match Found")
+
+                    // Get the document ID to perform the update
+                    val visitorId = doc.id
+
+                    val updates = hashMapOf<String, Any>(
+                        "status" to 1,
+                        "checkInDate" to today
+                    )
+
+                    // update
+                    firestore.collection("visitor").document(visitorId)
+                        .update(updates)
+                        .addOnSuccessListener {
+                            Log.d("Firestore", "Parking status updated for plate number: $plateNumber")
+                        }
+                        .addOnFailureListener { e ->
+                            Log.e("Firestore", "Error updating parking status for plate: $plateNumber", e)
+                            // Optionally, show an error Toast
+                        }
+
+
+
                 } else {
                     showMatchedCard(plateNumber, "-", "No Match")
                 }
@@ -113,6 +140,7 @@ class AdminOcrScanFragment : Fragment() {
             .addOnFailureListener {
                 Log.e("Firestore", "Error checking plate", it)
             }
+
     }
 
     private fun showMatchedCard(plate: String, owner: String, status: String) {
